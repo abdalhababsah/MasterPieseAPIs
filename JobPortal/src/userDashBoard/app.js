@@ -23,7 +23,6 @@ document.getElementById('ProfileLoction').addEventListener('click', function() {
 });
 
 function fetchAndDisplayPosts(userID) {
-    // Create an object containing the userID
     const data = { userID };
 
     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php', {
@@ -64,12 +63,12 @@ function createCard(post) {
             <p class="card-loc"><ion-icon name="location-outline"></ion-icon>abcd stereet</p>
         </div>
         <div class="card-right">
+        <div class="card-salary">
+            <p><b class="your-provide">${post.Username}</b><span></span></p>
+        </div>
             <div class="card-tag">
-                <h5>Division</h5>
-                <button onclick="displayPostDetails(${post.PostID})">View</button>
-            </div>
-            <div class="card-salary">
-                <p><b class="your-provide">${post.Username}</b><span></span></p>
+                
+                <button class="but-apply" onclick="displayPostDetails(${post.PostID})">View</button>
             </div>
         </div>
     `;
@@ -117,10 +116,11 @@ function displayPostDetails(postId) {
             <hr class="divider">
             <div class="detail-btn">
                 <button class="but-apply">Apply Now</button>
-                <button onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
+                <button id="addFriend" onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
                 </div>
         `;
 
+        console.log(post.profile_picture)
         // Show the detail view
         detail.classList.add('active');
     })
@@ -204,11 +204,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 // send friend request :::
-
-
 function sendRequest(receiverID) {
     // const senderID = sessionStorage.getItem('userid'); // Get senderID from session
-    const senderID =2 // Get senderID from session
+    const senderID = 30 // Get senderID from session
     const skillID = 1; // Assuming skillID is always 1 based on your description
 
     const requestData = {
@@ -226,19 +224,62 @@ function sendRequest(receiverID) {
     })
     .then(response => {
         if (response.ok) {
-            // If the request was successful, show an alert
             return response.json();
         } else {
             throw new Error('Request failed');
         }
     })
     .then(data => {
-        // Show an alert indicating the success message from the server
+        // Process the response as needed
+        // For instance, if you want to display a message:
+        if (data.message=="Skill swap request sent!"){
+            document.getElementById('addFriend').textContent='Pendding';
+
+        }
+        else if (data.message=="Skill swap request deleted"){
+            document.getElementById('addFriend').textContent='Add friend';
+
+        }
         alert(data.message);
     })
     .catch(error => {
-        // Handle any errors that occurred during the fetch
-        console.error('Error sending request:', error);
-        // Optionally, you can show an error alert or handle the error in another way
+        console.log('Error sending request:', error);
+        // Handle errors here
     });
 }
+
+
+
+// function checkSkillSwapRequest(senderID, receiverID) {
+//     // const url = ; // Replace with your actual API endpoint
+  
+//     const requestData = {
+//       senderID: senderID,
+//       receiverID: receiverID
+//     };
+  
+//     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+   
+//       },
+//       body: JSON.stringify(requestData)
+//     })
+//       .then(response => response.json())
+//       .then(data => {
+//         console.log(data); // Handle the API response here
+//         // Example: Displaying the message in an HTML element with id="response"
+//         document.getElementById('addFriend').textContent = data.message;
+//       })
+//       .catch(error => {
+//         console.error('Error:', error);
+//         // Handle errors here
+//       });
+//   }
+  
+//   // Example usage:
+//   const senderID = 30; // Replace with the actual sender ID
+//   const receiverID = 2; // Replace with the actual receiver ID
+//   checkSkillSwapRequest(senderID, receiverID);
+  

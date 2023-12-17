@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($data['PostID'])) {
             $postId = $data['PostID'];
-            $query = "SELECT posts.* , users.Username , users.ProfilePictureURL FROM posts JOIN users on users.UserID = posts.UserID WHERE PostID = ? ;";
+            $query = "SELECT posts.* , users.Username , users.ProfilePictureURL AS profile_picture FROM posts JOIN users on users.UserID = posts.UserID WHERE PostID = ? ;";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$postId]);
             $post = $stmt->fetch(PDO::FETCH_ASSOC);
