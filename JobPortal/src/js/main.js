@@ -107,7 +107,7 @@ if (isLoggedIn === 'true' && roleId === '1') {
   loginButtonNav.textContent = 'Log out';
 
   signupButtonNav.addEventListener('click', () => {
-    window.location.href = '/JobPortal/src/userDashBoard/index.html';
+    window.location.href = '/MasterPieseAPIs/JobPortal/src/userDashBoard/index.html';
   });
   loginButtonNav.addEventListener('click', (e) => {
     // Log out logic
@@ -123,3 +123,4 @@ if (isLoggedIn === 'true' && roleId === '1') {
     window.location.href = 'loginandsighnup.html';
   });
 }
+// C:\xampp\htdocs\MasterPieseAPIsGithub\MasterPieseAPIs\JobPortal\src\userDashBoard\index.html

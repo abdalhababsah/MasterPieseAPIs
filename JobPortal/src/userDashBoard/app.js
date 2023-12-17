@@ -170,10 +170,8 @@ document.getElementById('searchButton').addEventListener('click', function() {
 document.addEventListener("DOMContentLoaded", function() {
 
     let userID = sessionStorage.getItem("userid");
-    if(!userID)(
-        userID=2
-    )
-    fetchAndDisplayPosts(2);
+
+    fetchAndDisplayPosts(userID);
 });
 
 
@@ -205,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // send friend request :::
 function sendRequest(receiverID) {
-    // const senderID = sessionStorage.getItem('userid'); // Get senderID from session
-    const senderID = 30 // Get senderID from session
+    const senderID = sessionStorage.getItem('userid'); // Get senderID from session
+ // Get senderID from session
     const skillID = 1; // Assuming skillID is always 1 based on your description
 
     const requestData = {

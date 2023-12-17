@@ -16,8 +16,7 @@ $(".logo").on("click", function () {
 
 // Function to fetch pending swap requests
 function fetchPendingRequests(userId) {
-  // Replace 'SESSION_USER_ID' with the actual way to retrieve the user ID from the session
-  // let userId = 'SESSION_USER_ID'; // Get the user ID from the session
+
 
   fetch(
     "http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/selectUserAcceptedRequests.php",
@@ -92,16 +91,13 @@ function deleteFriend(RequestID) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.message); // Log the response message
-      // Optionally update the UI or perform additional actions based on the response
+      console.log(data.message); 
     })
     .catch((error) => console.error("Error:", error));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   let userID = sessionStorage.getItem("userid");
-  
-  if (!userID)
-  {userID = 2;} 
-  fetchPendingRequests(2);
+
+  fetchPendingRequests(userID);
 });

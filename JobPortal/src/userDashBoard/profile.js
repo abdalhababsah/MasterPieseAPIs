@@ -45,9 +45,7 @@ function fetchUserDataAndPopulateForm(userID) {
 document.addEventListener("DOMContentLoaded", function() {
 
     let userID = sessionStorage.getItem("userid");
-    if(!userID)(
-        userID=3
-    )
+  
     fetchUserDataAndPopulateForm(userID);
 });
 

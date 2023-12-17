@@ -125,10 +125,8 @@ function acceptRequest(requestID) {
 
 document.addEventListener("DOMContentLoaded", function () {
     let userID = sessionStorage.getItem("userid");
-    
-    if (!userID)
-    {userID = 2;} 
-    fetchPendingRequests(1);
+
+    fetchPendingRequests(userID);
 
   });
    // Replace 'user123' with the actual user ID
