@@ -46,6 +46,7 @@ function displayPosts(posts) {
         document.getElementById('CardContainertwo').appendChild(card); // Append card to container
     });
 }
+const basePath = '/MasterPieseAPIs/server/User/loginAndRegister/img/';
 
 // Function to create a card
 function createCard(post) {
@@ -54,7 +55,7 @@ function createCard(post) {
 
     card.innerHTML = `
         <div class="card-left blue-bg">
-            <img src="${post.profile_picture}" alt="Profile Picture" class="profile-picture">
+        <img src="${basePath + post.profile_picture}" alt="Profile Picture" class="profile-picture">
         </div>
         <div class="card-center">
             <h3 class="username"></h3>
@@ -94,8 +95,8 @@ function displayPostDetails(postId) {
         detail.innerHTML = `
             <ion-icon class="close-detail" name="close-outline"></ion-icon>
             <div class="detail-header">
-                <img src="${post.profile_picture}" alt="">
-                <h2>${post.Username}</h2>
+            <img src="${basePath + post.profile_picture}" alt="">
+            <h2>${post.Username}</h2>
                 <p>${post.YourNeed}</p>
             </div>
             <hr class="divider">
