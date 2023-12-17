@@ -123,6 +123,12 @@ function acceptRequest(requestID) {
     });
 }
 
-// Example: Call fetchPendingRequests with the user's ID
-const userID = 2; // Replace 'user123' with the actual user ID
-fetchPendingRequests(userID);
+document.addEventListener("DOMContentLoaded", function () {
+    let userID = sessionStorage.getItem("userid");
+    
+    if (!userID)
+    {userID = 2;} 
+    fetchPendingRequests(1);
+
+  });
+   // Replace 'user123' with the actual user ID
