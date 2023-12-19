@@ -56,14 +56,12 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
       if (data.STATUS === true && data.ROLE == 2) {
         sessionStorage.setItem("userid", data.USER_ID);
         sessionStorage.setItem("roleiId", data.ROLE)
-        sessionStorage.setItem("senderID", 3)
-        sessionStorage.setItem("receiverID", 2)
+
 
         sessionStorage.setItem("isLoggedin", "true");
         window.location.href = "/MasterPieseAPIs/JobPortal/src/index.html";
       } else if (data.STATUS === true && data.ROLE == 1) {
-        sessionStorage.setItem("senderID", 2)
-        sessionStorage.setItem("receiverID", 3)
+     
         sessionStorage.setItem("roleiId", data.ROLE)
         sessionStorage.setItem("userid", data.USER_ID);
         sessionStorage.setItem("isLoggedin", "true");
