@@ -7,7 +7,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'> -->
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css'> -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" href="./userDashBoard/dist/newbots.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -201,8 +205,28 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+        <div id="chat-circle" class="btn btn-raised">
+            <div id="chat-overlay"></div>
+            <i class="material-icons">speaker_phone</i>
+        </div>
+        
+        <div class="chat-box">
+            <div class="chat-box-header">
+                ChatBot
+                <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+            </div>
+            <div class="chat-box-body">
+                <div class="chat-box-overlay"></div>
+                <div class="chat-logs"></div>
+            </div>
+            <div class="chat-input">      
+                <div class="input-data">
+                    <input id="data" type="text" class="chat-input" placeholder="Type something here.." required>
+                    <button class="chat-submit" id="send-btn"><i class="material-icons">send</i></button>
+                </div>
+            </div>
+        </div>
+        <script src="./userDashBoard/dist/chatbots.js"></script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

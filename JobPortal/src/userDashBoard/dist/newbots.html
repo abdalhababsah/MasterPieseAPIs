@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head details -->
+    <meta charset="UTF-8">
+    <title>ChatBot</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" href="newbots.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script></head>
+<body>
+    <div id="chat-circle" class="btn btn-raised">
+        <div id="chat-overlay"></div>
+        <i class="material-icons">speaker_phone</i>
+    </div>
+    
+    <div class="chat-box">
+        <div class="chat-box-header">
+            ChatBot
+            <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+        </div>
+        <div class="chat-box-body">
+            <div class="chat-box-overlay"></div>
+            <div class="chat-logs"></div>
+        </div>
+        <div class="chat-input">      
+            <div class="input-data">
+                <input id="data" type="text" class="chat-input" placeholder="Type something here.." required>
+                <button class="chat-submit" id="send-btn"><i class="material-icons">send</i></button>
+            </div>
+        </div>
+    </div>
+    <script src="chatbots.js"></script>
+</body>
+</html>
