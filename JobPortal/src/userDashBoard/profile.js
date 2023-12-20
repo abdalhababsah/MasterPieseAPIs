@@ -29,7 +29,7 @@ function fetchUserDataAndPopulateForm(userID) {
 
             // Populate form fields with user data
             document.getElementById('userName').innerText = data.Username;
-            document.getElementById('ProfileImg').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
+            // document.getElementById('ProfileImg').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
             document.getElementById('ProfileImgTwo').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
 
             document.getElementById('userEmail').innerText = data.Email;

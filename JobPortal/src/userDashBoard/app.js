@@ -17,12 +17,13 @@ $(".logo").on("click", function(){
 
 
 
-document.getElementById('ProfileLoction').addEventListener('click', function() {
+// document.getElementById('ProfileLoction').addEventListener('click', function() {
 
-    window.location.href = 'Profile.html';
-});
+//     window.location.href = 'Profile.html';
+// });
 
 function fetchAndDisplayPosts(userID) {
+    console.log(userID)
     const data = { userID };
 
     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php', {
@@ -52,10 +53,11 @@ const basePath = '/MasterPieseAPIs/server/User/loginAndRegister/img/';
 function createCard(post) {
     const card = document.createElement('div');
     card.classList.add('card');
+    // document.getElementById('ProfileImg').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
 
     card.innerHTML = `
         <div class="card-left blue-bg">
-        <img src="${basePath + post.profile_picture}" alt="Profile Picture" class="profile-picture">
+        <img src="/server/User/loginAndRegister/img/${post.profile_picture}" alt="Profile Picture" class="profile-picture">
         </div>
         <div class="card-center">
             <h3 class="username"></h3>
@@ -171,7 +173,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
 document.addEventListener("DOMContentLoaded", function() {
 
     let userID = sessionStorage.getItem("userid");
-
+console.log(userID)
     fetchAndDisplayPosts(userID);
 });
 

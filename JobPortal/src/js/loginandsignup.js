@@ -59,13 +59,13 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
 
 
         sessionStorage.setItem("isLoggedin", "true");
-        window.location.href = "/JobPortal/src/index.html";
+        window.location.href = "/MasterPieseAPIs/JobPortal/src/index.html";
       } else if (data.STATUS === true && data.ROLE == 1) {
      
         sessionStorage.setItem("roleiId", data.ROLE)
         sessionStorage.setItem("userid", data.USER_ID);
         sessionStorage.setItem("isLoggedin", "true");
-        window.location.href = "/JobPortal/src/index.html";
+        window.location.href = "/MasterPieseAPIs/JobPortal/src/index.html";
       } else {
         alert("the email or password not valid")
       }
