@@ -97,7 +97,7 @@ if (isLoggedIn === 'true' && roleId === '1') {
   loginButtonNav.addEventListener('click', (e) => {
     // Log out logic
     console.log('Logout button clicked');
-    window.location.href = '/JobPortal/src/index.html';
+    window.location.href = '/MasterPieseAPIs/JobPortal/src/index.html';
     sessionStorage.clear();
   });
   
@@ -111,7 +111,7 @@ if (isLoggedIn === 'true' && roleId === '1') {
   });
   loginButtonNav.addEventListener('click', (e) => {
     // Log out logic
-    window.location.href = '/JobPortal/src/index.html';
+    window.location.href = '/MasterPieseAPIs/JobPortal/src/index.html';
     sessionStorage.clear();
   });
 } else {

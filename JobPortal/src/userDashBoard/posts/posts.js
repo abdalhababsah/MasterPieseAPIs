@@ -18,10 +18,10 @@ $(".logo").on("click", function(){
 
 
 
-document.getElementById('ProfileLoction').addEventListener('click', function() {
+// document.getElementById('ProfileLoction').addEventListener('click', function() {
 
-    window.location.href = '../profile.html';
-});
+//     window.location.href = '../profile.html';
+// });
 
 
 
