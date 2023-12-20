@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="sidebarcsspuplic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
         rel="stylesheet">
@@ -52,35 +55,37 @@
 <body>
     <div id="mainContaner">
 
-        <div class="sidebar">
-            <h1 class="logo">SkillSwap</h1>
-            <div class="menus">
-                <div class="menus">
-                    <a href="/JobPortal/src/index.html"><ion-icon name="home-outline"></ion-icon> home</a>
-                    <a href="./posts/posts.html"><ion-icon name="newspaper-outline"></ion-icon>Posts</a>
-                    <a href="index.html"><ion-icon name="stats-chart-outline"></ion-icon>Swap skill</a>
-                    <a href=""><ion-icon name="bookmarks-outline"></ion-icon> bookmarks</a>
-                    <a href=""><ion-icon name="mail-unread-outline"></ion-icon> messags</a>
-                    <a href="SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends</a>
-                    <a href="./SkillSwapRequests/Friends.html"><ion-icon name="settings-outline"></ion-icon> Friends
-                        request</a>
-                    <a href="./profile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
-                    <a href="./editProfile.html"><ion-icon name="settings-outline"></ion-icon> Friends pendding</a>
-                </div>
-            </div>
-            <div id="ProfileLoction" class="profile">
-                <img id="ProfileImg" class="profile-img" src="/images/download (4).jpeg" alt="">
-                <div class="profile-name">
-                    <h4>albert einstein</h4>
-                    <p>Data Science</p>
-                </div>
+        <div class="sidebar" id="sidebar">
+            <h1 class="logo" id="logo">SkillSwap</h1>
+            <div class="menus" id="menus">
+                <ul>
+                    <li id="dashboard">
+                        <a  href="index.html"><i class="fa-solid fa-chart-simple"></i>Dashboard</a>
+                    </li>
+                    <li id="home">
+                        <a href="/JobPortal/src/index.html"><i class="fa-solid fa-house"></i> Home Page</a>
+                    </li>
+                    <li id="posts">
+                        <a href="./posts/posts.html"><i class="fa-solid fa-newspaper"></i>Posts</a>
+                    </li>
+                    <li id="messages">
+                        <a href="chatApp.html"><i class="fa-regular fa-comments"></i> Messages</a>
+                    </li>
+                    <li id="friends">
+                        <a href="SkillSwapRequests/Friends.html"><i class="fa-solid fa-user-group"></i> Friends</a>
+                    </li>
+                    <li id="friendRequests">
+                        <a href=""><i class="fa-solid fa-bell"></i> Friends request</a>
+                    </li>
+                    <li id="pendingFriends">
+                        <a href="SkillSwapRequests/penddingRequests.html"><i class="fa-solid fa-people-group"></i> Friends pendding</a>
+                    </li>
+                    <li  id="profile">
+                        <a  href="/JobPortal/src/userDashBoard/profile.html"><i class="fa-solid fa-user"></i> Your Profile </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <!-------------------------------------------->
-        <!--------------------MAIN-------------------->
-        <!-------------------------------------------->
-
         <div id="CardContainer" class="main">
             <div class="main-header">
                 <ion-icon class="menu-bar" name="menu-outline">

@@ -123,7 +123,6 @@ $('#message-input').keypress(function(event) {
     }
 });
 
-
 function loadUsers() {
     let userID = sessionStorage.getItem("userid");
     $.ajax({
@@ -138,19 +137,18 @@ function loadUsers() {
                 let receiverID = user.ReceiverID;
                 console.log("Before swapping - senderID:", senderID, "receiverID:", receiverID, "userID:", userID);
 
-                // Check if senderID is not equal to userID, then switch senderID and receiverID
-                if (senderID != userID) {
-                    let temp = senderID;
-                    senderID = receiverID;
-                    receiverID = temp;
-                }
-                console.log("After swapping - senderID:", senderID, "receiverID:", receiverID, "userID:", userID);
+                // Determine which user's data to display based on conditions
+                let displayID = (senderID != userID) ? senderID : receiverID;
+                let displayUsername = (senderID != userID) ? user.SenderUsername : user.ReceiverUsername;
+                let displayProfileURL = (senderID != userID) ? user.SenderProfilePictureURL : user.ReceiverProfilePictureURL;
+
+                console.log("Displaying data for ID:", displayID, "Username:", displayUsername);
 
                 $('#user-list').append(`
                     <li class="clearfix user-item" data-senderid="${senderID}" data-receiverid="${receiverID}">
-                        <img src="${user.ProfilePictureURL}" alt="avatar">
+                        <img src="${displayProfileURL}" alt="avatar">
                         <div class="about">
-                            <div class="name">${user.SenderUsername}</div>
+                            <div class="name">${displayUsername}</div>
                             <!-- Add any other user details as needed -->
                         </div>
                     </li>
@@ -168,14 +166,21 @@ function loadUsers() {
         }
     });
 }
+
 // Function to display the selected user in the chat section
-function displaySelectedUser(senderID, receiverID ,SenderUsername) {
+function displaySelectedUser(senderID, receiverID, SenderUsername) {
+    let userID = sessionStorage.getItem("userid");
+
+    if (senderID != userID) {
+        let temp = senderID;
+        senderID = receiverID;
+        receiverID = temp;
+    }
 
     $('.chat-about h6').text(SenderUsername); // Update with user's name
-    sessionStorage.setItem("senderID", senderID)
-    sessionStorage.setItem("receiverID", receiverID)
+    sessionStorage.setItem("senderID", senderID);
+    sessionStorage.setItem("receiverID", receiverID);
     loadMessages(senderID, receiverID);
 }
-
 
 loadUsers();

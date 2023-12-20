@@ -19,10 +19,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($data['UserID'])) {
             $userID = $data['UserID'];
 
-            $query = "SELECT s.RequestID, s.SenderID, s.ReceiverID, s.SkillID,sender.ProfilePictureURL,sender.mainProffision, s.RequestStatus, sender.Username AS SenderUsername
-                      FROM skillswaprequests s
-                      INNER JOIN users sender ON s.SenderID = sender.UserID
-                      WHERE s.ReceiverID = :userID or s.SenderID = :userID AND s.RequestStatus = 'Accepted'";
+            $query = "SELECT 
+    s.RequestID, 
+    s.SenderID, 
+    s.ReceiverID, 
+    s.SkillID,
+    sender.ProfilePictureURL AS SenderProfilePictureURL,
+    sender.mainProffision AS SenderMainProfession,
+    sender.Username AS SenderUsername,
+    receiver.ProfilePictureURL AS ReceiverProfilePictureURL,
+    receiver.mainProffision AS ReceiverMainProfession,
+    receiver.Username AS ReceiverUsername,
+    s.RequestStatus
+FROM 
+    skillswaprequests s
+INNER JOIN 
+    users sender ON s.SenderID = sender.UserID
+INNER JOIN 
+    users receiver ON s.ReceiverID = receiver.UserID
+WHERE 
+    (s.ReceiverID = :userID OR s.SenderID = :userID) AND s.RequestStatus = 'Accepted';";
 
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':userID', $userID);
