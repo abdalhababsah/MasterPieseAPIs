@@ -83,6 +83,9 @@ function displayPendingRequests(requests, userId) {
         <button type="button" class="btn btn-danger" onclick="deleteFriend(${request.RequestID})">
         <i class="feather icon-message-square mr-2"></i>Delete
         </button>
+        <a type="button" class="btn btn-success" href="../friendsprofileandreview/friendsprofileandreview.html#${displayID}">
+        <i class="feather icon-message-square mr-2"></i>Delete
+        </a>
         </div>
         </div>
         </div>
@@ -124,3 +127,4 @@ document.addEventListener("DOMContentLoaded", function () {
 function sendMessage() {
   window.location.href="../chatApp.html"
 }
+
