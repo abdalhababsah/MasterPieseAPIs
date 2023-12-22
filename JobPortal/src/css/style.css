@@ -20,6 +20,13 @@
     bottom: 45px;
     z-index: 99;
 }
+video {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 5px solid #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
 
 
 /*** Spinner ***/

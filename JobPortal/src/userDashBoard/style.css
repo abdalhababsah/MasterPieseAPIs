@@ -13,6 +13,10 @@
 .btn-primary{
     background-color: #25316D !important;
 }
+.btn-outline-primary {
+    color: #25316D !important;
+    border-color: #25316D !important;
+}
 
 * {
     margin: 0;

@@ -63,7 +63,7 @@ function displayPendingRequests(requests, userId) {
     } 
 
     let card = document.createElement("div");
-    card.classList.add("col-md-6", "col-xl-4"); // Add Bootstrap classes
+    card.classList.add("col-md-12", "col-xl-5"); // Add Bootstrap classes
 
     // Set the inner HTML of the card with user information and action buttons
     card.innerHTML = `
@@ -84,7 +84,7 @@ function displayPendingRequests(requests, userId) {
         <i class="feather icon-message-square mr-2"></i>Delete
         </button>
         <a type="button" class="btn btn-success" href="../friendsprofileandreview/friendsprofileandreview.html#${displayID}">
-        <i class="feather icon-message-square mr-2"></i>Delete
+        <i class="feather icon-message-square mr-2"></i>View
         </a>
         </div>
         </div>
