@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log('Review Posted:', data);
             fetchAndDisplayReviews();
+            reviewTextElement.value = '';
+            ratingSelectElement.value = '0';
         })
         .catch(error => console.error('Error:', error));
     });
