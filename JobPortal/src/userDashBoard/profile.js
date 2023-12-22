@@ -1,3 +1,5 @@
+
+
 $(".card").on("click", function () {
     $(".detail").addClass("active");
 });
@@ -58,8 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.getElementById('ProfileLoction').addEventListener('click', function () {
+// document.getElementById('ProfileLoction').addEventListener('click', function () {
 
-    window.location.href = 'Profile.html';
-});
+//     window.location.href = 'Profile.html';
+// });
+
+
+// Call the function to fetch and display reviews
+
+
 
