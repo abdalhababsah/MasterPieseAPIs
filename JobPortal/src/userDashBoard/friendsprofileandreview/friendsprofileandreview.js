@@ -99,4 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     fetchAndDisplayReviews();
+
+    fetchUserDataAndPopulateForm(targetUserID)
 });
