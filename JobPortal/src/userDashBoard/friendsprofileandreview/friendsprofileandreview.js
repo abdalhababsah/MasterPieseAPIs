@@ -28,79 +28,73 @@ function fetchUserDataAndPopulateForm(targetUserID) {
             console.error('Error:', error);
         });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const targetUserID = window.location.hash.substring(1); 
+    const loggedInUserID = sessionStorage.getItem('userid'); 
 
-document.addEventListener("DOMContentLoaded", function () {
-
-   
-    const targetUserID = window.location.hash.substring(1);
-
-    fetchUserDataAndPopulateForm(targetUserID);
-});
-
-// Function to fetch and display reviews for a specific user
-function fetchReviews(userID) {
-    const apiURL = 'http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/readUserReviews.php'; // Replace with your API endpoint for fetching reviews
-
-    fetch(apiURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ UserID: userID })
-    })
-    .then(response => response.json())
-    .then(reviews => displayReviews(reviews))
-    .catch(error => console.error('Error:', error));
-}
-
-// Function to display reviews
-function displayReviews(reviews) {
-    const container = document.getElementById('reviewsContainer'); // Replace with your actual container ID
-    container.innerHTML = '';
-
-    reviews.forEach(review => {
-        const reviewDiv = document.createElement('div');
-        reviewDiv.className = 'review';
-        reviewDiv.innerHTML = `<p>${review.ReviewText}</p>`; // Modify as needed to display review details
-        container.appendChild(reviewDiv);
-    });
-}
-
-// Function to handle the submission of a new review
-function submitReview(event) {
-    event.preventDefault(); // Prevents the default form submission behavior
-
-    const loggedInUserID = sessionStorage.getItem('userid'); // Retrieve the logged-in user ID from session storage
-    const targetUserID = window.location.hash.substring(1); // Assuming this is the ID of the user being reviewed
-    const reviewText = document.getElementById('reviewText').value; // Replace 'reviewText' with your actual textarea ID
-    const rating = document.getElementById('rating_simple').value; // Replace with your actual rating field ID
-
-    const apiURL = 'http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/createcomment.php'; // Replace with your API endpoint for posting reviews
-
-    fetch(apiURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            ReviewerID: loggedInUserID,
-            TargetUserID: targetUserID,
-            Rating: rating,
-            ReviewText: reviewText
+    function fetchAndDisplayReviews() {
+        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/readUserReviews.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ UserID: targetUserID })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        fetchReviews(targetUserID); // Refetch reviews to display the new one
-    })
-    .catch(error => console.error('Error:', error));
-}
+        .then(response => response.json())
+        .then(reviews => displayReviews(reviews))
+        .catch(error => console.error('Error:', error));
+    }
 
-// Event listener for the review form submission
-document.getElementById('reviewForm').addEventListener('submit', submitReview); // Replace 'reviewForm' with your form ID
+    function displayReviews(reviews) {
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        reviewsContainer.innerHTML = '';
 
-// Extract User ID from URL and fetch reviews for that user
-const userID = window.location.hash.substring(1);
-fetchReviews(userID);
+        reviews.forEach(review => {
+            const reviewDiv = document.createElement('div');
+            reviewDiv.className = 'review';
+            reviewDiv.innerHTML = `
+                <h6 class="fw-bold text-primary mb-1">${review.ReviewerUsername}</h6>
+                <p class="text-muted small mb-0">Shared publicly - ${new Date(review.ReviewDate).toLocaleDateString()}</p>
+                <p class="mt-3 mb-4 pb-2">${review.ReviewText}</p>
+                ${generateRatingStars(review.Rating)}
+            `;
+            reviewsContainer.appendChild(reviewDiv);
+        });
+    }
 
+    function generateRatingStars(rating) {
+        let starsHtml = '';
+        for (let i = 0; i < 5; i++) {
+            starsHtml += i < rating ? '<span class="fa fa-star checked"></span>' : '<span class="fa fa-star"></span>';
+        }
+        return starsHtml;
+    }
+
+    const reviewForm = document.getElementById('reviewForm');
+    reviewForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const targetUserID = window.location.hash.substring(1); 
+        const loggedInUserID = sessionStorage.getItem('userid');
+        const reviewText = document.getElementById('reviewText').value;
+        const rating = document.getElementById('ratingSelect').value;
+        console.log(reviewText)
+        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/createcomment.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ReviewerID: loggedInUserID,
+                TargetUserID: targetUserID,
+                Rating: rating,
+                ReviewText: reviewText
+            })
+       
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Review Posted:', data);
+            fetchAndDisplayReviews();
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+
+    fetchAndDisplayReviews();
+});
