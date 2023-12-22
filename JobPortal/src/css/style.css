@@ -12,6 +12,14 @@
     --light: #EFFDF5;
     --dark: #2B3940;
 }
+#hi1{
+    display: none;
+}
+@media (max-width:991px) {
+    #hi1{
+        display: block;
+    }
+}
 
 .back-to-top {
     position: fixed;

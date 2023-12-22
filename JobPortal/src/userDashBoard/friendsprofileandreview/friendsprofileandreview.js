@@ -53,9 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
             reviewDiv.className = 'review';
             reviewDiv.innerHTML = `
                 <h6 class="fw-bold text-primary mb-1">${review.ReviewerUsername}</h6>
-                <p class="text-muted small mb-0">Shared publicly - ${new Date(review.ReviewDate).toLocaleDateString()}</p>
+                <p class="text-muted small mb-0">Shared - ${new Date(review.ReviewDate).toLocaleDateString()}</p>
                 <p class="mt-3 mb-4 pb-2">${review.ReviewText}</p>
                 ${generateRatingStars(review.Rating)}
+                <hr>
             `;
             reviewsContainer.appendChild(reviewDiv);
         });
