@@ -22,7 +22,7 @@ $(document).ready(function(){
             // Check if the user is trying to login or sign up
             if((value.includes("log") || value.includes("sign")) && sessionStorage.getItem("isLoggedin") === "true") {
                 // User is already logged in
-                $(".chat-logs").append('<div class="chat-msg bot"><p>You are already logged in. Please log out first if you want to log in again or sign up.</p></div>');
+                $(".chat-logs").append('<div class="chat-msg bot"><p>You are already logged in.</p></div>');
                 $(".chat-logs").scrollTop($(".chat-logs")[0].scrollHeight);
             } else {
                 // Proceed with sending the message
