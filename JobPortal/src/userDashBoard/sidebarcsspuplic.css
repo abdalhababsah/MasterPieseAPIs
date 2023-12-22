@@ -111,11 +111,15 @@ body {
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     cursor: pointer;
+    border: 1px solid #ffce00 ;
+
 }
 
 #profile:hover {
-    background-color: var(--whiteColor);
+    background-color: var(--primaryColor);
     color: var(--softYellow);
+    border: 1px solid #ffce00 ;
+
 }
 
 #profile-img {
