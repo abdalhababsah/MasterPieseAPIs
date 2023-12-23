@@ -80,6 +80,8 @@ function createCard(post) {
             </div>
         </div>
     `;
+  
+
 
     return card;
 }
@@ -124,6 +126,9 @@ function displayPostDetails(postId) {
                 <button id="addFriend" onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
                                 </div>
         `;
+        // let receiverID = post.UserID;
+        // const senderID = sessionStorage.getItem('userid');
+        // checkSkillSwapRequest(senderID ,receiverID);
 
         detail.classList.add('active');
         
@@ -193,6 +198,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // Function to filter and display posts based on search input
+
+
+
+
 function filterPosts(searchInput , I_knew) {
     const url = 'http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/SkillSwapSearch/SkillSwapSearch.php';
     const data = {
