@@ -115,11 +115,11 @@
                 <div class="records table-responsive">
 
                     <div class="record-header">
-                        <div class="add">
+                        <!-- <div class="add">
                             <span>Add</span>
 
                             <button class="addbtn" type="button"><a href="./add.bost.html?userID=${post.UserID}"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="browse">
                             <input type="search" placeholder="Search" class="record-search">
@@ -144,27 +144,7 @@
                             </thead>
                             
                                 <tbody id="postsTableBody">
-                                    <tr>
-                                        <td></td>
-                                        <td id="UserID">
-                                            
-                                        </td>
-                                        <td id="YourNeed">
-                                            
-                                        </td>
-                                        <td id="YourProvide">
-                                            
-                                        </td>
-                                        <td id="Description">
-                                            
-                                        </td>
-                                        <td>
-                                            <button class="btn" type="button" onclick="editUser(`${post.PostID}`)"><span class="las la-pen-alt"></span></button>
-                                            <button class="btn btn-delete" type="button" data-post-id="${post.PostID}"><span class="las la-trash-alt"></span></button>
-                                        </td>
-                                        
-                                        
-                                    </tr>
+                                   
                                 </tbody>
                             
                         </table>
@@ -179,9 +159,7 @@
     </div>
 
     <script>
-function editUser(postID) {
-    window.location.href = `./edit.post.html?postID=${postID}`;
-}
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -201,9 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             <td>${post.YourProvide}</td>
                             <td>${post.Description}</td>
                             <td>
-    <button class="btn" type="button" onclick="editUser(${post.PostID})"><span class="las la-pen-alt"></span></button>
-    <button class="btn btn-delete" type="button" data-post-id="${post.PostID}"><span class="las la-trash-alt"></span></button>
-</td>
+                                <button class="btn btn-delete" type="button" data-post-id="${post.PostID}">
+                                    <span class="las la-trash-alt"></span>
+                                </button>
+                            </td>
                         </tr>
                     `;
                     postsTableBody.innerHTML += row;
@@ -242,7 +221,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 // Handle the response, for example, you can refresh the table
-                console.log(data.message);
+                alert(data.message);
+                window.location.reload();
             })
             .catch(error => console.error('Error deleting post:', error));
     }
@@ -278,13 +258,37 @@ function fetchUserDataAndPopulateForm(userID) {
             });
         }
 
+
+        function fetchUserDataAndPopulateForm(userID) {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserID: userID }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Profile Picture URL:', data.ProfilePictureURL);
+
+                // Populate form fields with user data
+                document.getElementById('userName').innerText = data.Username;
+                document.getElementById('ProfileImgTwo').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
+                document.getElementById('userEmail').innerText = data.Email;
+                document.getElementById('userLocation').innerText = data.Location;
+                document.getElementById('userBio').innerText = data.Bio;
+
+                document.getElementById('editProfileButton').addEventListener('click', function () {
+                    window.location.href = `editProfile.html?userid=${userID} `;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
         document.addEventListener("DOMContentLoaded", function () {
             let userID = sessionStorage.getItem("userid");
             fetchUserDataAndPopulateForm(userID);
-        });
-
-        document.getElementById('ProfileLoction').addEventListener('click', function () {
-            window.location.href = 'Profile.html';
         });
     </script>
 </body>

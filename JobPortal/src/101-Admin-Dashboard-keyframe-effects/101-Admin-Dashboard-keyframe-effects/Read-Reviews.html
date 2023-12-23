@@ -108,70 +108,16 @@
             
             <div class="page-content">
             
-                <div class="analytics">
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>107,200</h2>
-                            <span class="las la-user-friends"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>User activity this month</small>
-                            <div class="card-indicator">
-                                <div class="indicator one" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>340,230</h2>
-                            <span class="las la-eye"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Page views</small>
-                            <div class="card-indicator">
-                                <div class="indicator two" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>$653,200</h2>
-                            <span class="las la-shopping-cart"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Monthly revenue growth</small>
-                            <div class="card-indicator">
-                                <div class="indicator three" style="width: 65%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>47,500</h2>
-                            <span class="las la-envelope"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>New E-mails received</small>
-                            <div class="card-indicator">
-                                <div class="indicator four" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+               
 
 
                 <div class="records table-responsive">
 
                     <div class="record-header">
                         <div class="add">
-                            <span>Add</span>
+                            <!-- <span>Add</span> -->
 
-                            <button class="addbtn" type="button"><a href="./ad"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button>
+                            <!-- <button class="addbtn" type="button"><a href="./ad"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button> -->
                         </div>
 
                         <!-- <div class="browse">
@@ -196,34 +142,6 @@
                                 </tr>
                             </thead>
                             <tbody id="reviews-container">
-                                <tr>
-
-                                    <td>#1</td>
-
-                                    <td>
-
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
-                                        <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
-                                    </td>
-
-                                    
-                                </tr>
-
-
                                 
                             </tbody>
                         </table>
@@ -238,94 +156,81 @@
     </div>
 
     <script>
-    function editUser(userID) {
-        // Assuming your edit page is named "edit.html"
-        window.location.href = `./edit-reviews.html?userID=${userID}`;
-    }
 
-
-    document.addEventListener("DOMContentLoaded", function () {
-        // DOMContentLoaded event ensures that the DOM is fully loaded before executing the script
-
-        // Fetch data from the API when the page is loaded
-        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/ReadReviews.php') // replace 'your_api_endpoint.php' with your actual API endpoint
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch data from the API when the page is loaded
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/ReadReviews.php')
+                .then(response => response.json())
+                .then(data => {
+                    const reviewsContainer = document.getElementById('reviews-container');
+                    reviewsContainer.innerHTML = ''; // Clear existing content
+                    if (data.length > 0) {
+                    data.forEach(review => {    
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${review.ReviewID}</td>
+                            <td>${review.ReviewerUsername}</td>
+                            <td>${review.TargetUsername}</td>
+                            <td>${review.Rating}</td>
+                            <td>${review.ReviewText}</td>
+                            <td>${review.ReviewDate}</td>
+                            <td>
+                                <button class="btn btn-delete" data-review-id="${review.ReviewID}" type="button">
+                                    <span class="las la-trash-alt"></span>
+                                </button>
+                            </td>
+                        `;
+                        reviewsContainer.appendChild(row);
+                    });
+        
+                    attachDeleteEventListeners();
+                } else {
+                    const row = `
+                        <tr>
+                            <td colspan="5">No reviews found</td>
+                        </tr>
+                    `;
+                    reviewsContainer.innerHTML = row;
+                }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+                 });
+                
+        
+        function attachDeleteEventListeners() {
+            // Attach event listeners to delete buttons
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', function() {
+                    const reviewID = this.getAttribute('data-review-id');
+                    deleteReview(reviewID);
+                });
+            });
+        }
+        
+        function deleteReview(reviewID) {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/DeleteReview.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ReviewID: reviewID }),
+            })
             .then(response => response.json())
             .then(data => {
-                // Handle the fetched data here
-                // For example, you can update the table with the fetched data
-
-                const reviewsContainer = document.getElementById('reviews-container');
-                reviewsContainer.innerHTML = ''; // Clear existing content
-
-                data.forEach(review => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${review.ReviewID}</td>
-                        <td>${review.ReviewerUsername}</td>
-                        <td>${review.TargetUsername}</td>
-                        <td>${review.Rating}</td>
-                        <td>${review.ReviewText}</td>
-                        <td>${review.ReviewDate}</td>
-                        <td>
-                            <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
-                            <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
-                        </td>
-                    `;
-                    reviewsContainer.appendChild(row);
-                });
+                if (data.message) {
+                    console.log(data.message);
+                    // Refresh the reviews list or remove the deleted item from the DOM for immediate feedback
+                    document.querySelector(`button[data-review-id="${reviewID}"]`).closest('tr').remove();
+                } else if (data.error) {
+                    console.error('Error:', data.error);
+                }
             })
-            .catch(error => console.error('Error fetching data:', error));
-    });
-
-
-
-
-//dddddddddddddddddddddddddddddddddddddddd
-document.addEventListener("DOMContentLoaded", function () {
-    const reviewsContainer = document.getElementById('reviews-container');
-
-    function deleteReview(reviewID) {
-        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/DeleteReview.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ReviewID: reviewID }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response here
-            if (data.message) {
-                console.log(data.message);
-                // Optionally, you can update the UI or show a success message
-            } else if (data.error) {
-                console.error('Error:', data.error);
-                // Handle error, show an error message, etc.
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle network errors or other issues
-        });
-    }
-
-    // Event delegation to handle click events on delete buttons
-    reviewsContainer.addEventListener('click', function (event) {
-        if (event.target.classList.contains('btn-delete')) {
-            const reviewID = event.target.closest('tr').querySelector('td:first-child').textContent;
-            deleteReview(reviewID);
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-    });
-
-    // The rest of your existing code for fetching and displaying reviews
-    // ...
-
-});
-
-
-
-//////////////////////
-function fetchUserDataAndPopulateForm(userID) {
+        
+        function fetchUserDataAndPopulateForm(userID) {
             fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
                 method: 'POST',
                 headers: {
@@ -352,16 +257,17 @@ function fetchUserDataAndPopulateForm(userID) {
                 console.error('Error:', error);
             });
         }
-
         document.addEventListener("DOMContentLoaded", function () {
             let userID = sessionStorage.getItem("userid");
             fetchUserDataAndPopulateForm(userID);
         });
 
-        // document.getElementById('ProfileLoction').addEventListener('click', function () {
-        //     window.location.href = 'Profile.html';
-        // });
-
-    </script>
+</script>
+<!-- reviewsContainer.addEventListener('click', function (event) {
+    if (event.target.classList.contains('btn-delete')) {
+        const reviewID = event.target.closest('tr').querySelector('td:first-child').textContent;
+        deleteReview(reviewID);
+    }
+}); -->
 </body>
 </html>

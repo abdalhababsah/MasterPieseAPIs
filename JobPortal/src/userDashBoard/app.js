@@ -14,13 +14,29 @@ $(".logo").on("click", function(){
     $(".sidebar").removeClass("active");
 });
 
-
-
-
 // document.getElementById('ProfileLoction').addEventListener('click', function() {
 
 //     window.location.href = 'Profile.html';
 // });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var closeDetail = document.querySelectorAll('.close-detail');
+
+//     closeDetail.forEach(function(button) {
+//         button.addEventListener('click', function() {
+//             var detailElements = document.querySelectorAll('.detail');
+//             detailElements.forEach(function(detail) {
+//                 detail.classList.remove('active');
+//             });
+//         });
+//     });
+// });
+function closeDetail() {
+    var detailElements = document.querySelectorAll('.detail');
+    detailElements.forEach(function(detail) {
+        detail.classList.remove('active');
+    });
+}
 
 function fetchAndDisplayPosts(userID) {
     console.log(userID);
@@ -99,7 +115,7 @@ function displayPostDetails(postId) {
     .then(post => {
         const detail = document.querySelector('.detail');
         detail.innerHTML = `
-            <ion-icon class="close-detail" name="close-outline"></ion-icon>
+            <ion-icon class="close-detail" name="close-outline" onclick ="closeDetail()"></ion-icon>
             <div class="detail-header">
             <img src="/MasterPieseAPIs/server/User/loginAndRegister/img/${post.profile_picture}" alt="">
             <h2>${post.Username}</h2>
@@ -122,7 +138,6 @@ function displayPostDetails(postId) {
             </div>
             <hr class="divider">
             <div class="detail-btn">
-                <button class="but-apply">Apply Now</button>
                 <button id="addFriend" onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
                                 </div>
         `;
@@ -228,17 +243,30 @@ console.log(filteredPosts)
 }
 
 // Event listener for search button
+// document.getElementById('searchButton').addEventListener('click', function() {
+//     const searchInput = document.getElementById('searchInput').value.trim(); // Get search input value
+//     if(searchInput ==' '|| searchInput =='' ){
+//        let I_knew = '';
+//     }else{
+//         I_knew =sessionStorage.getItem('mainProffision');
+//     }
+//     filterPosts(searchInput,I_knew);
+//      // Filter posts based on search input
+// });
 document.getElementById('searchButton').addEventListener('click', function() {
     const searchInput = document.getElementById('searchInput').value.trim(); // Get search input value
-    if(searchInput==''){
-       let I_knew = '';
-    }else{
-        I_knew =sessionStorage.getItem('mainProffision');
-    }
-    filterPosts(searchInput,I_knew);
-     // Filter posts based on search input
-});
+    let I_knew = ''; // Declare the variable with an initial empty string value
 
+    if (searchInput === '' || searchInput === ' ') {
+        // Set I_knew to an empty string if searchInput is empty or contains only spaces
+        I_knew = '';
+    } else {
+        // If searchInput is not empty, retrieve the value from sessionStorage
+        I_knew = sessionStorage.getItem('mainProffision');
+    }
+
+    filterPosts(searchInput, I_knew); // Filter posts based on search input
+});
 // Fetch and display all posts initially
 
 
@@ -255,24 +283,24 @@ console.log(userID)
 const toggleFriends = document.querySelectorAll('.toggle-friends');
 
 // Loop through each element and add a click event listener
-toggleFriends.forEach((toggle) => {
-  toggle.addEventListener('click', function() {
-    // Find the next element with the 'friends-submenu' class
-    const submenu = this.nextElementSibling;
+// toggleFriends.forEach((toggle) => {
+//   toggle.addEventListener('click', function() {
+//     // Find the next element with the 'friends-submenu' class
+//     const submenu = this.nextElementSibling;
 
-    // Toggle the 'show' class to collapse or expand the submenu
-    submenu.classList.toggle('show');
-  });
-});
+//     // Toggle the 'show' class to collapse or expand the submenu
+//     submenu.classList.toggle('show');
+//   });
+// });
 
-document.addEventListener('DOMContentLoaded', function(){
-    const drop = document.getElementById('drop');
-    const droplist = document.getElementById('drop-list');
+// document.addEventListener('DOMContentLoaded', function(){
+//     const drop = document.getElementById('drop');
+//     const droplist = document.getElementById('drop-list');
 
-    drop.addEventListener('click', function (){
-        droplist.classList.toggle('show');
-    });
-});
+//     drop.addEventListener('click', function (){
+//         droplist.classList.toggle('show');
+//     });
+// });
 
 
 

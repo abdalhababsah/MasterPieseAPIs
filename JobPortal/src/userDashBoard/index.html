@@ -11,6 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,700&family=Roboto:wght@100;300&display=swap"
         rel="stylesheet">
+     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <title>SkillSwap Website</title>
 </head>
 
@@ -67,7 +69,7 @@
                 <button class="btn-filter">CRM Analyst</button>
             </div> -->
         </div>
-        <div class="sort">
+        <!-- <div class="sort">
             <p>sort</p>
             <div class="sort-list">
                 <select>
@@ -78,7 +80,7 @@
                     <option value="4">Highest paid</option>
                 </select>
             </div>
-        </div>
+        </div> -->
         <div id="CardContainertwo">
             <div class="wrapper">
 
@@ -166,5 +168,26 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="app.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
+<script>
+            $(document).ready(function() {
+            $(".card").on("click", function() {
+                $(".detail").addClass("active");
+            });
+
+            $(".close-detail").on("click", function() {
+                $(".detail").removeClass("active");
+            });
+
+            $(".menu-bar").on("click", function() {
+                $(".sidebar").addClass("active");
+            });
+
+            $(".logo").on("click", function() {
+                $(".sidebar").removeClass("active");
+            });
+        });
+</script>
 </html>

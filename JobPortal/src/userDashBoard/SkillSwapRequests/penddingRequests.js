@@ -38,7 +38,7 @@ function displayPendingRequests(requests) {
     const cardContainer = document.getElementById('CardContainer');
 
     requests.forEach(request => {
-        const { RequestID, SenderUsername, SkillID } = request;
+        const { RequestID, SenderUsername, SkillID,ProfilePictureURL  } = request;
 
         const card = document.createElement('div');
         card.className = 'col-md-6 col-xl-4';
@@ -46,8 +46,9 @@ function displayPendingRequests(requests) {
             <div class="card">
                 <div class="card-body d-flex flex-column">
                     <div class="media align-items-center">
-                        <span style="background-image: url(https://bootdey.com/img/Content/avatar/avatar6.png)" class="avatar avatar-xl mr-3"></span>
-                        <div class="media-body overflow-hidden">
+                    <img class="avatar avatar-xl mr-3" src="/MasterPieseAPIs/server/User/loginAndRegister/img/${ProfilePictureURL}" alt="">
+                    <div class="media-body overflow-hidden">
+
                             <h5 class="card-text mb-0">${SenderUsername}</h5>
                             <p class="card-text text-uppercase text-muted">${SkillID}</p>
                         </div>

@@ -108,17 +108,21 @@ body {
 .profile-name p {
     font-size: 12px;
 } */
-@media screen and (max-width: 700px){
-.detail.active {
-    display: block;
-    width: 100%;
-    z-index: 100;
-}
-}
-@media screen and (max-width: 700px){
-.detail {
-    display: none;
-}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 880px){
 .detail {
     width: 40%;
@@ -354,6 +358,8 @@ body {
     display: none;
 }
 
+
+
 .detail-header {
     display: flex;
     flex-direction: column;
@@ -390,6 +396,7 @@ body {
 .detail-btn {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     margin: 1rem 0;
 }
 
@@ -449,13 +456,14 @@ body {
     .detail.active {
         display: block;
         width: 100%;
-        z-index: 100;
+        /* z-index: 100; */
     }
 
     .detail.active .close-detail {
         display: block;
         cursor: pointer;
     }
+    
 }
 
 @media screen and (max-width:480px) {
@@ -471,4 +479,23 @@ body {
 
 .drop-list.show {
     display: block;
+}
+@media screen and (max-width:880px) {
+    .menu-bar {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+        margin-left: 0;
+    
+    }
+
+    .detail {
+        width: 40%;
+    }
 }

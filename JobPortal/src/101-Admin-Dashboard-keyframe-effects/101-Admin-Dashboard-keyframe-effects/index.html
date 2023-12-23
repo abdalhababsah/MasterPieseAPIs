@@ -112,59 +112,41 @@
             
                 <div class="analytics">
 
+                    <!-- User Count -->
                     <div class="card">
                         <div class="card-head">
-                            <h2>107,200</h2>
-                            <span class="las la-user-friends"></span>
+                            <h2 id="userCount">Loading...</h2>
+                            <span class="las la-users"></span> <!-- Changed icon -->
                         </div>
                         <div class="card-progress">
-                            <small>User activity this month</small>
-                            <div class="card-indicator">
-                                <div class="indicator one" style="width: 60%"></div>
-                            </div>
+                            <small>Total Users</small>
                         </div>
                     </div>
-
+                
+                    <!-- Post Count -->
                     <div class="card">
                         <div class="card-head">
-                            <h2>340,230</h2>
-                            <span class="las la-eye"></span>
+                            <h2 id="postCount">Loading...</h2>
+                            <span class="las la-clipboard-list"></span> <!-- Changed icon -->
                         </div>
                         <div class="card-progress">
-                            <small>Page views</small>
-                            <div class="card-indicator">
-                                <div class="indicator two" style="width: 80%"></div>
-                            </div>
+                            <small>Total Posts</small>
                         </div>
                     </div>
-
+                
+                    <!-- Friends Count -->
                     <div class="card">
                         <div class="card-head">
-                            <h2>$653,200</h2>
-                            <span class="las la-shopping-cart"></span>
+                            <h2 id="friendCount">Loading...</h2>
+                            <span class="las la-user-friends"></span> <!-- Appropriate icon -->
                         </div>
                         <div class="card-progress">
-                            <small>Monthly revenue growth</small>
-                            <div class="card-indicator">
-                                <div class="indicator three" style="width: 65%"></div>
-                            </div>
+                            <small>Friends (Accepted)</small>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>47,500</h2>
-                            <span class="las la-envelope"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>New E-mails received</small>
-                            <div class="card-indicator">
-                                <div class="indicator four" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-
+                
                 </div>
+                
 
 
                 <div class="records table-responsive">
@@ -224,7 +206,7 @@
                                     </td>
                                     <td>
                                         <div class="actions">
-                                            <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
+                                            <button class="btn" type="button" ><span class="las la-pen-alt"></span></button>
                                             <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
                                         </div>
                                     </td>
@@ -350,6 +332,7 @@ function deleteUser(userID) {
         .then(data => {
             // Handle the response data
             console.log(data.message); // Output the message from the server
+            window.location.reload();
             // You can perform additional actions as needed
         })
         .catch(error => {
@@ -400,9 +383,32 @@ function fetchUserDataAndPopulateForm(userID) {
             fetchUserDataAndPopulateForm(userID);
         });
 
-        document.getElementById('ProfileLoction').addEventListener('click', function () {
-            window.location.href = 'Profile.html';
+
+        ///////////////////////////////////////////////////////////
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/statices.php')  
+                .then(response => response.json())
+                .then(data => {
+                    const userCountElement = document.getElementById('userCount');
+                    const postCountElement = document.getElementById('postCount');
+                    const friendCountElement = document.getElementById('friendCount');
+        
+                    if(userCountElement) userCountElement.innerText = data.userCount || "0";
+                    if(postCountElement) postCountElement.innerText = data.postCount || "0";
+                    if(friendCountElement) friendCountElement.innerText = data.friendCount || "0";
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    // Fallback text if there's an error
+                    if(userCountElement) userCountElement.innerText = "Unavailable";
+                    if(postCountElement) postCountElement.innerText = "Unavailable";
+                    if(friendCountElement) friendCountElement.innerText = "Unavailable";
+                });
         });
+        
+        
+     
     </script>
 </body>
 </html>
