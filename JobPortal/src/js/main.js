@@ -92,12 +92,9 @@ const isLoggedIn = sessionStorage.getItem('isLoggedin');
 if (isLoggedIn === 'true' && roleId === '1') {
   signupButtonNav.textContent = 'Dashboard';
   signupButtonNav.addEventListener('click', (e) => {
-    window.location.href = 'admindashboard';
+    window.location.href = '101-Admin-Dashboard-keyframe-effects/101-Admin-Dashboard-keyframe-effects/index.html';
   });
-  // signupButtonNav1.textContent = 'Dashboard';
-  // signupButtonNav1.addEventListener('click', (e) => {
-  //   window.location.href = 'admindashboard';
-  // });
+  
   loginButtonNav.addEventListener('click', (e) => {
     // Log out logic
     console.log('Logout button clicked');

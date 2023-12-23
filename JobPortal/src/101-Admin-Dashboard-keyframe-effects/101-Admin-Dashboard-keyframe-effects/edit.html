@@ -109,61 +109,7 @@
             
             <div class="page-content">
             
-                <div class="analytics">
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>107,200</h2>
-                            <span class="las la-user-friends"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>User activity this month</small>
-                            <div class="card-indicator">
-                                <div class="indicator one" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>340,230</h2>
-                            <span class="las la-eye"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Page views</small>
-                            <div class="card-indicator">
-                                <div class="indicator two" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>$653,200</h2>
-                            <span class="las la-shopping-cart"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Monthly revenue growth</small>
-                            <div class="card-indicator">
-                                <div class="indicator three" style="width: 65%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>47,500</h2>
-                            <span class="las la-envelope"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>New E-mails received</small>
-                            <div class="card-indicator">
-                                <div class="indicator four" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            
 
 
                 <div class="records table-responsive">
@@ -176,10 +122,12 @@
                 
                         <form  id="editUserForm">
                             <div class="tttt">
-                                <div  class="form-group">
-                                
-                                    <input type="text" class="form-control" id="editRolesID" placeholder="Roles ID" required>
-                                </div>
+                                <select class="form-control" id="editRolesID" required>
+                                    <option value="">Select Role</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                  </select>
+                                  
                     
                                 <div class="form-group">
                                     
@@ -212,37 +160,25 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Get the UserID from the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
-            const userID = urlParams.get("userID");
-
-            document.getElementById("saveButton").addEventListener("click", function() {
-                // Replace with the actual user ID you want to update
+            const userID = urlParams.get('userID');
+        
+            if (!userID) {
+                console.error("UserID is not provided in the URL");
+                return;
+            }
+        
+            fetchUserDataAndPopulateForm(userID);
+        
+            document.getElementById("saveButton").addEventListener("click", function () {
                 const userDataToUpdate = {
                     "UserID": userID,
                     "RolesID": document.getElementById("editRolesID").value,
                     "Username": document.getElementById("editUsername").value,
                     "PasswordHash": document.getElementById("editPassword").value,
-                    "Email": document.getElementById("editEmail").value,
-                    // Include other fields you want to update
+                    "Email": document.getElementById("editEmail").value
                 };
-                
-                
-                
-                
-                
-                ///////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////
-                // edit 
-                
-                // http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/UpdateUser.php
-
-
-
-
-
+        
                 fetch(`http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/UpdateUser.php?userID=${userID}`, {
                     method: "PUT",
                     headers: {
@@ -250,28 +186,66 @@
                     },
                     body: JSON.stringify(userDataToUpdate),
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();  // Assuming the server responds with JSON
-                })
+                .then(response => response.json())
                 .then(data => {
                     console.log("Success:", data);
-                    // You can handle the success response here
+                    window.location.href = "./index.html"; // Redirect to another page
                 })
                 .catch(error => {
-                    console.error("Error:", error.message);
-                    // Display or handle the error message here
+                    console.error("Error:", error);
+                    // Handle the error, display an error message, or take appropriate action
                 });
             });
         });
-
+        
+        function fetchUserDataAndPopulateForm(userID) {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserID: userID }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    console.error('Error fetching data:', data.error);
+                } else {
+                    document.getElementById('editUsername').value = data.Username || '';
+                    document.getElementById('editEmail').value = data.Email || '';
+                    setRoleDropdown(data.RolesID);
+                    document.getElementById('editPassword').value = data.PasswordHash || '';
+                }
+            })
+            .catch(error => {
+                console.error('Failed to fetch user data:', error);
+            });
+        }
+        function setRoleDropdown(roleId) {
+            const selectElement = document.getElementById('editRolesID');
+            if (selectElement) {
+                // Remove previously selected attribute
+                Array.from(selectElement.options).forEach(option => {
+                    option.selected = false;
+                });
+        
+                // Set the selected attribute based on the value
+                Array.from(selectElement.options).forEach(option => {
+                    if (option.value == roleId) {
+                        option.selected = true;
+                    }
+                });
+            }
+        }
         
 
-//////////////////////
-
-function fetchUserDataAndPopulateForm(userID) {
+        //////////////////////////////
+        function fetchUserDataAndPopulateForm(userID) {
             fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
                 method: 'POST',
                 headers: {
@@ -298,15 +272,11 @@ function fetchUserDataAndPopulateForm(userID) {
                 console.error('Error:', error);
             });
         }
-
         document.addEventListener("DOMContentLoaded", function () {
             let userID = sessionStorage.getItem("userid");
             fetchUserDataAndPopulateForm(userID);
         });
-
-        document.getElementById('ProfileLoction').addEventListener('click', function () {
-            window.location.href = 'Profile.html';
-        });
+        
     </script>
 </body>
 </html>

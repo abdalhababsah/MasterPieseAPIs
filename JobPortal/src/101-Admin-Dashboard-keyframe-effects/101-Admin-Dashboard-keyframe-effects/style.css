@@ -19,6 +19,12 @@
     display: none;
 }
 
+.la-users:before,
+.la-clipboard-list:before,
+.la-user-friends:before {
+    color: #22BAA0;
+}
+
 .sidebar {
     position: fixed;
     height: 100%;
@@ -334,7 +340,7 @@ main {
 
 .analytics {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin-top: .5rem;
     margin-bottom: 2rem;
@@ -482,7 +488,7 @@ table thead th:first-child {
 }
 
 table tbody td {
-    padding: 1rem 0rem;
+    padding: 25px 34px;
     color: #444;
 }
 
