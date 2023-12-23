@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($data['UserID'])) {
             $userID = $data['UserID'];
 
-            $query = "SELECT s.RequestID, s.SenderID, s.ReceiverID, s.SkillID, s.RequestStatus, sender.Username AS SenderUsername
+            $query = "SELECT s.RequestID, s.SenderID, s.ReceiverID, s.SkillID, s.RequestStatus, sender.ProfilePictureURL, sender.Username AS SenderUsername
                       FROM skillswaprequests s
                       INNER JOIN users sender ON s.SenderID = sender.UserID
                       WHERE s.ReceiverID = :userID AND s.RequestStatus = 'Pending'";
