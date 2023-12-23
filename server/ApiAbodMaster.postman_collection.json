@@ -1,0 +1,1280 @@
+{
+	"info": {
+		"_postman_id": "5232160e-2b85-4ba5-80e9-a87616945fc6",
+		"name": "ApiAbodMaster",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30832341"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "PostsCrud",
+					"item": [
+						{
+							"name": "Creatpost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "        {\r\n        \"UserID\": 0,\r\n        \"YourNeed\": \"Web Development Help\",\r\n        \"YourProvide\": \"Graphic Design\",\r\n        \"Description\": \"Looking for assistance in front-end development\"\r\n        }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/postsCrud/CreatePost.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"postsCrud",
+										"CreatePost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletPost",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"PostID\": 49\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/postsCrud/DeletePost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"postsCrud",
+										"DeletePost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadAllposts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\postsCrud\\ReadAllPosts.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"postsCrud",
+										"ReadAllPosts.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadPost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\"PostID\":48\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\postsCrud\\ReadPost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"postsCrud",
+										"ReadPost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatpost",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"PostID\": 48,\r\n  \"YourNeed\": \"Updated Need Description\",\r\n  \"YourProvide\": \"Updated Provide Description\",\r\n  \"Description\": \"Updated post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\postsCrud\\UpdatePost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"postsCrud",
+										"UpdatePost.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "reviews",
+					"item": [
+						{
+							"name": "ReadReviews",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteReview",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\r\n\r\n   \"ReviewID\":6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\reviews\\DeleteReview.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"reviews",
+										"DeleteReview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateReview",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhostMasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\reviews\\UpdateReview.php",
+									"host": [
+										"localhostMasterPieseAPIsGithub"
+									],
+									"path": [
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"reviews",
+										"UpdateReview.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UserCrud",
+					"item": [
+						{
+							"name": "DeleteUsers",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"userID\":51\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\DeleteUsers.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"DeleteUsers.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadSpacificUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\r\n\r\n    \"UserID\":47\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\ReadSpacificUser.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"ReadSpacificUser.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadUsers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\ReadUsers.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"ReadUsers.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateUsers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"RolesID\": \"2\", \r\n\"Username\": \"kljn\",\r\n\"PasswordHash\": \"string\",\r\n\"Email\": \"osamaalhmadeen03@gmail.com\",\r\n\"ProfilePictureURL\": \"http://ahjndfncdn\",\r\n\"Location\": \"street \",\r\n\"Bio\": \"no pirs\"\r\n } ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\CreateUsers.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"CreateUsers.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateUser",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserID\": \"47\",\r\n    \"RolesID\": \"2\",\r\n    \"Username\": \"police\",\r\n    \"PasswordHash\": \"string (optional)\", \r\n    \"Email\": \"ahmad@0111gmail.com\",\r\n    \"ProfilePictureURL\":\"http://ahmd\",\r\n    \"Location\": \"string (optional)\",\r\n    \"Bio\": \"string (optional)\",\r\n    \"RegistrationDate\": \"string (optional)\" } ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\UpdateUser.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"UpdateUser.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateuserwithimage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "47",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "proses",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "gmail87@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "ajhjhb",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Orange/Downloads/DALL·E 2023-12-23 20.27.57 - A picturesque view of a Palestinian city, capturing its unique architectural beauty and cultural essence. The image includes historical buildings with.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\Admin\\usersCrud\\updateuserwithimage.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"Admin",
+										"usersCrud",
+										"updateuserwithimage.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "loginAndRegister",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"email\": \"ahmad@icloud.com\",\r\n    \"password\": \"ahmad1234\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\loginAndRegister\\login.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"loginAndRegister",
+										"login.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "nn",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "lairg",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "presf05@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "mainProffision",
+											"value": "consd",
+											"type": "text"
+										},
+										{
+											"key": "profile_picture",
+											"type": "file",
+											"src": "/C:/Users/Orange/Downloads/DALL·E 2023-12-23 20.27.57 - A picturesque view of a Palestinian city, capturing its unique architectural beauty and cultural essence. The image includes historical buildings with.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/user/loginAndRegister/nn.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"user",
+										"loginAndRegister",
+										"nn.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"username\": \"testuser\",\r\n    \"email\": \"testuser@example.com\",\r\n    \"password\": \"testpassword\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "Localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\loginAndRegister\\register.php",
+									"host": [
+										"Localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"loginAndRegister",
+										"register.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "masseging",
+					"item": [
+						{
+							"name": "ReadMessage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"SenderID\": 37,\r\n    \"ReceiverID\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\masseging\\ReadMessage.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"masseging",
+										"ReadMessage.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SendMessage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"SenderID\": 0,\r\n    \"ReceiverID\": 37,\r\n    \"MessageText\": \"Hello, this is a test message.\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\masseging\\SendMessage.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"masseging",
+										"SendMessage.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateMessage",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"MessageID\": 98,\r\n    \"NewMessageText\": \"Updated message text.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\masseging\\UpdateMessage.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"masseging",
+										"UpdateMessage.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "postsCrud",
+					"item": [
+						{
+							"name": "CreatePost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserID\": 52,\r\n    \"YourNeed\": \"Web Development Help\",\r\n    \"YourProvide\": \"Graphic Design\",\r\n    \"Description\": \"Looking for assistance in front-end development\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/CreatePost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"CreatePost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeletePost",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PostID\": 57\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/DeletePost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"DeletePost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadAllPosts",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userID\": 57\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"ReadAllPosts.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadPost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PostID\": 48\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadPost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"ReadPost.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReadSpacificUserPosts",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"UserID\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadSpacificUserPosts.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"ReadSpacificUserPosts.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdatePost",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PostID\": 50,\r\n    \"YourNeed\": \"Updated Need Description\",\r\n    \"YourProvide\": \"Updated Provide Description\",\r\n    \"Description\": \"Updated post description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/UpdatePost.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"postsCrud",
+										"UpdatePost.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "review",
+					"item": [
+						{
+							"name": "deleteReview",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ReviewID\": 18\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/deleteReview.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"review",
+										"deleteReview.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createcomment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ReviewerID\": 38,\r\n    \"TargetUserID\": 38,\r\n    \"Rating\": 4,\r\n    \"ReviewText\": \"A great user to work with!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/createcomment.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"review",
+										"createcomment.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "readReviewMade",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"UserID\": 38\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/readReviewMade.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"review",
+										"readReviewMade.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "readUserReviews",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserID\": 38\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/readUserReviews.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"review",
+										"readUserReviews.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateUserReview",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"ReviewID\": 17,\r\n    \"Rating\": 5,\r\n    \"ReviewText\": \"This is an updated review.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/review/updateUserReview.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"review",
+										"updateUserReview.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "skillSwapRequests",
+					"item": [
+						{
+							"name": "AcceptingSkillSwapRequests",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"requestID\": 149\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/AcceptingSkillSwapRequests.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"AcceptingSkillSwapRequests.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteFriend",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"RequestID\": 143\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/deleteFriend.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"deleteFriend.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "InnerHTMLpenddingOrAddFriend",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\r\n    \t\"senderID\":47,\r\n\t\t\"receiverID\":46\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"InnerHTMLpenddingOrAddFriend.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RejectingSkillSwapRequests",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"requestID\": 146\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/RejectingSkillSwapRequests.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"RejectingSkillSwapRequests.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "selectUserAcceptedRequests",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserID\":47\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/selectUserAcceptedRequests.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"selectUserAcceptedRequests.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "selectUserPendingReq",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserID\":47\r\n}\r\n ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\skillSwapRequests\\selectUserPendingReq.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"selectUserPendingReq.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SendingSkillSwapRequests",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"senderID\": 52,\r\n    \"receiverID\": 0,\r\n    \"skillID\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/SendingSkillSwapRequests.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"skillSwapRequests",
+										"SendingSkillSwapRequests.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SkillSwapSearch",
+					"item": [
+						{
+							"name": "SkillSwapSearch",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"I_need\": \"Illustrations\",\r\n    \"I_knew\": \"Graphic Design\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost\\MasterPieseAPIsGithub\\MasterPieseAPIs\\server\\User\\SkillSwapSearch\\SkillSwapSearch.php",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"MasterPieseAPIsGithub",
+										"MasterPieseAPIs",
+										"server",
+										"User",
+										"SkillSwapSearch",
+										"SkillSwapSearch.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
