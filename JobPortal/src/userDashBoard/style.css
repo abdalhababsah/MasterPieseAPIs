@@ -108,7 +108,32 @@ body {
 .profile-name p {
     font-size: 12px;
 } */
-
+@media screen and (max-width: 700px){
+.detail.active {
+    display: block;
+    width: 100%;
+    z-index: 100;
+}
+}
+@media screen and (max-width: 700px){
+.detail {
+    display: none;
+}}
+@media screen and (max-width: 880px){
+.detail {
+    width: 40%;
+}}
+.detail {
+    width: 25%;
+    min-width: 250px;
+    height: 100%;
+    padding: 2rem;
+    position: fixed;
+    right: 0;
+    background-color: var(--whiteColor);
+    overflow: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 .main {
     width: calc(100% - 20% - 25%);
     min-height: 100%;

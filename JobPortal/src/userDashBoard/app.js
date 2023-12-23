@@ -63,7 +63,7 @@ function createCard(post) {
             <h3 class="username"></h3>
             <p class="card-detail">Looking for: ${post.YourNeed}</p>
             <p class="card-detail">I know: ${post.YourProvide}</p>
-            <p class="card-loc"><ion-icon name="location-outline"></ion-icon>abcd stereet</p>
+           
         </div>
         <div class="card-right">
         <div class="card-salary">

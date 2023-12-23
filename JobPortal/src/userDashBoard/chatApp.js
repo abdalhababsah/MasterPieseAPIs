@@ -44,7 +44,7 @@ function loadMessages(senderID, receiverID) {
                     `<li class="clearfix">
                         <div class="message-data text-right">
                             <span class="message-data-time">${message.Timestamp}</span>
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                           
                         </div>
                         <div class="message other-message float-right">${message.MessageText}</div>
                     </li>`;
@@ -83,7 +83,6 @@ function loadMessages(senderID, receiverID) {
             $('#message-list').append(`
                 <li class="clearfix">
                     <div class="message-data">
-                        <span class="message-data-time">Current Time</span>
                         </div>
                         <div class="message my-message">${messageText}</div>
                         </li>
@@ -146,7 +145,7 @@ function loadUsers() {
 
                 $('#user-list').append(`
                     <li class="clearfix user-item" data-senderid="${senderID}" data-receiverid="${receiverID}">
-                        <img src="${displayProfileURL}" alt="avatar">
+                        <img src="/MasterPieseAPIs/server/User/loginAndRegister/img/${displayProfileURL}" alt="avatar">
                         <div class="about">
                             <div class="name">${displayUsername}</div>
                             <!-- Add any other user details as needed -->
@@ -184,3 +183,13 @@ function displaySelectedUser(senderID, receiverID, SenderUsername) {
 }
 
 loadUsers();
+
+
+
+// setInterval(function() {
+//     let senderID = sessionStorage.getItem("senderID");
+//     let receiverID = sessionStorage.getItem("receiverID");
+//     if (senderID && receiverID) {
+//         loadMessages(senderID, receiverID);
+//     }
+// }, 10000); // 5000 milliseconds = 5 seconds
