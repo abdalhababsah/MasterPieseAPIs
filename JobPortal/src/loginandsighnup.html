@@ -14,25 +14,41 @@
 
   <title>SkillSwap</title>
   <link rel="stylesheet" href="./css/loginandsignup.css" />
-  <script src="../custom-scripts.js" defer></script>
 </head>
 
 <body>
   <section class="wrapper">
     <div class="form signup">
-      <header>Signup</header>
-      <form id="signupForm" enctype="multipart/form-data">
+    <header>Signup</header>
+    <form id="signupForm" enctype="multipart/form-data">
+        <!-- Other input fields -->
         <input type="text" id="fullName1" name="username" placeholder="Full name" required />
         <input type="text" id="email1" name="email" placeholder="Email address" required />
         <input type="password" id="password1" name="password" placeholder="Password" required />
         <input type="file" id="profilePicture" name="profile_picture[]" accept="image/*" multiple required />
+
+        <!-- Dropdown for Main Profession -->
+        <select id="mainProffision" name="mainProffision" required>
+            <option value="">Select Main Profession</option>
+            <option value="Business & Finance">Business & Finance</option>
+            <option value="Technology & Coding">Technology & Coding</option>
+            <option value="Art & Design">Art & Design</option>
+            <option value="Language & Communication">Language & Communication</option>
+            <option value="Energy & Environment">Energy & Environment</option>
+            <option value="Social Services">Social Services</option>
+            <option value="Science & Research">Science & Research</option>
+            <option value="Health & Wellness">Health & Wellness</option>
+        </select>
+
+        <!-- Checkbox Section -->
         <div class="checkbox">
-          <input type="checkbox" id="signupCheck" required />
-          <label for="signupCheck">I accept all terms & conditions</label>
+            <input type="checkbox" id="signupCheck" required />
+            <label for="signupCheck">I accept all terms & conditions</label>
         </div>
-        <input type="button" value="Signup" onclick="registerUser()" />
+
+        <input type="submit" value="Signup"/>
       </form>
-    </div>
+</div>
 
     <div class="form login">
       <header>Login</header>

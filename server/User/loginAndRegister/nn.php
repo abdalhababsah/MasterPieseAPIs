@@ -10,8 +10,8 @@ $conn = mysqli_connect("localhost", "root", "", "abodmaster");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-
+    $password = $_POST['password']; // Consider hashing this password
+    $mainProffision = $_POST['mainProffision'];
     // Handle multiple image uploads for ProfilePictureURL
     $profileImageArray = array();
     if (!empty($_FILES['profile_picture']['name'])) {
@@ -30,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $profilePictureURL = (!empty($profileImageArray)) ? implode(', ', $profileImageArray) : null;
 
     // Fixed the query and removed extra comma at the end of the columns
-    $query = 'INSERT INTO users (Username, Email, PasswordHash, ProfilePictureURL) VALUES (?, ?, ?, ?)';
+    $query = 'INSERT INTO users (Username, Email, PasswordHash, ProfilePictureURL, mainProffision) VALUES (?, ?, ?, ?, ?)';
     $stmt = $conn->prepare($query);
 
     // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt->bind_param("ssss", $username, $email, $password, $profilePictureURL);
+    $stmt->bind_param("sssss", $username, $email, $password, $profilePictureURL, $mainProffision);
 
     $stmt->execute();
 

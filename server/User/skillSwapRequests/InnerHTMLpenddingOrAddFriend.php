@@ -4,9 +4,7 @@ header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-
 include '../include/connect.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -14,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // ... (existing code remains unchanged)
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $json_data = file_get_contents('php://input');
     $data = json_decode($json_data, true);
@@ -33,16 +30,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $checkStmt->bindParam(':receiverID', $receiverID);
             $checkStmt->execute();
 
-            if ($checkStmt->rowCount() > 0) {
-                // Request exists
-                $requestStatus = $checkStmt->fetch(PDO::FETCH_ASSOC)['RequestStatus'];
-                http_response_code(200);
-                echo json_encode(array("message" => "$requestStatus"));
-            } else {
-                // Request doesn't exist
-                http_response_code(200);
-                echo json_encode(array("message" => "Add Friend"));
+            $requestStatus = "Add Friend"; // Default status if no matching request found
+
+            while ($row = $checkStmt->fetch(PDO::FETCH_ASSOC)) {
+                $currentStatus = $row['RequestStatus'];
+
+                // If any request is accepted, set the status to "Accepted" and break
+                if ($currentStatus == "Accepted") {
+                    $requestStatus = "Friend";
+                    break;
+                } elseif ($currentStatus == "Pending" && $requestStatus != "Accepted") {
+                    // If there is a pending request, update the status to "Pending"
+                    $requestStatus = "Pending";
+                }
             }
+
+            http_response_code(200);
+            echo json_encode(array("message" => $requestStatus));
+
         } catch (PDOException $e) {
             http_response_code(500);
             echo json_encode(array("message" => "Error: " . $e->getMessage()));
@@ -55,3 +60,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(405);
     echo json_encode(array("message" => "Method not allowed"));
 }
+?>
