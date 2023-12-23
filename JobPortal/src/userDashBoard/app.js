@@ -23,7 +23,7 @@ $(".logo").on("click", function(){
 // });
 
 function fetchAndDisplayPosts(userID) {
-    console.log(userID)
+    console.log(userID);
     const data = { userID };
 
     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/postsCrud/ReadAllPosts.php', {
@@ -31,20 +31,25 @@ function fetchAndDisplayPosts(userID) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // Convert the data object to JSON
+        body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(posts => {
-        displayPosts(posts); // Display posts returned from the server
+        // Clearing existing posts before displaying new ones
+        const container = document.getElementById('CardContainertwo');
+        container.innerHTML = '';
+        displayPosts(posts);
     })
     .catch(error => console.error('Error fetching data:', error));
 }
 
+
+
 // Function to display posts
 function displayPosts(posts) {
     posts.forEach(post => {
-        const card = createCard(post); // Create card for each post
-        document.getElementById('CardContainertwo').appendChild(card); // Append card to container
+        const card = createCard(post);
+        document.getElementById('CardContainertwo').appendChild(card);
     });
 }
 const basePath = '/MasterPieseAPIs/server/User/loginAndRegister/img/';
@@ -88,14 +93,11 @@ function displayPostDetails(postId) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            PostID: postId
-        })
+        body: JSON.stringify({ PostID: postId })
     })
     .then(response => response.json())
     .then(post => {
         const detail = document.querySelector('.detail');
-
         detail.innerHTML = `
             <ion-icon class="close-detail" name="close-outline"></ion-icon>
             <div class="detail-header">
@@ -122,18 +124,75 @@ function displayPostDetails(postId) {
             <div class="detail-btn">
                 <button class="but-apply">Apply Now</button>
                 <button id="addFriend" onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
-                </div>
+                                </div>
         `;
         // let receiverID = post.UserID;
         // const senderID = sessionStorage.getItem('userid');
         // checkSkillSwapRequest(senderID ,receiverID);
 
-        console.log(post.profile_picture)
-        // Show the detail view
         detail.classList.add('active');
+        
+        // Check and update the skill swap request status
+        checkSkillSwapRequest(sessionStorage.getItem('userid'), post.UserID, function(statusMessage) {
+            const addFriendButton = document.getElementById('addFriend');
+            addFriendButton.textContent = statusMessage || 'Check Status'; // Set default message if empty
+        });
+
     })
     .catch(error => console.error('Error fetching post:', error));
 }
+
+
+
+
+function checkSkillSwapRequest(senderID, receiverID, callback) {
+    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ senderID: senderID, receiverID: receiverID })
+    })
+    .then(response => response.json())
+    .then(data => {
+        callback(data.message); // Call the callback function with the message
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        callback('Error'); // Call the callback with an error message
+    });
+}
+
+// Your existing code for sendRequest, filterPosts, etc.
+
+// Event listener for DOMContentLoaded to fetch and display all posts initially
+document.addEventListener("DOMContentLoaded", function() {
+    let userID = sessionStorage.getItem("userid");
+    fetchAndDisplayPosts(userID);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -174,7 +233,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
     if(searchInput==''){
        let I_knew = '';
     }else{
-        I_knew =sessionStorage.getItem('proff');
+        I_knew =sessionStorage.getItem('mainProffision');
     }
     filterPosts(searchInput,I_knew);
      // Filter posts based on search input
@@ -263,35 +322,3 @@ function sendRequest(receiverID) {
 }
 
 
-
-function checkSkillSwapRequest(senderID, receiverID) {
-    // const url = ; // Replace with your actual API endpoint
-  
-    const requestData = {
-      senderID: senderID,
-      receiverID: receiverID
-    };
-  
-    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-   
-      },
-      body: JSON.stringify(requestData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Handle the API response here
-        // Example: Displaying the message in an HTML element with id="response"
-        document.getElementById('addFriend').textContent = data.message;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        // Handle errors here
-      });
-  }
-  
-  // Example usage:
- // Replace with the actual receiver ID
-  

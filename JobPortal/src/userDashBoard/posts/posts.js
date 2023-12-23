@@ -212,3 +212,12 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
+
+
+
+var mainProfessionPlaceholder = sessionStorage.getItem('mainProffision');
+
+// Set the placeholder text for the "YourProvide" input field
+var yourProvideInput = document.getElementById('YourProvide');
+yourProvideInput.value = mainProfessionPlaceholder;
+console.log(mainProfessionPlaceholder);

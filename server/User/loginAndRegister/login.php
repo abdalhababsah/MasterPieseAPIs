@@ -23,7 +23,7 @@ class UserAuthentication {
             $email = $data["email"];
             $password = $data["password"];
 
-            $query = "SELECT UserID , RolesID FROM users WHERE email = :email AND passwordHash = :password";
+            $query = "SELECT UserID , RolesID,mainProffision FROM users WHERE email = :email AND passwordHash = :password";
             $stmt = $this->pdo->prepare($query);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
@@ -32,7 +32,7 @@ class UserAuthentication {
 
             if (count($result) > 0) {  
                 $user = $result[0];
-                $response = array('STATUS' => true, 'ROLE' => $user['RolesID'], 'USER_ID' => $user['UserID']);
+                $response = array('STATUS' => true, 'ROLE' => $user['RolesID'], 'USER_ID' => $user['UserID'],'mainProffision' => $user['mainProffision']);
             } else {
                 $response = array('STATUS' => false);
             }

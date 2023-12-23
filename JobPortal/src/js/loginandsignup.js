@@ -57,7 +57,8 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
         sessionStorage.setItem("userid", data.USER_ID);
         sessionStorage.setItem("roleiId", data.ROLE)
 
-
+        sessionStorage.setItem("mainProffision", data.mainProffision)
+           
         sessionStorage.setItem("isLoggedin", "true");
         window.location.href = "/MasterPieseAPIs/JobPortal/src/index.html";
       } else if (data.STATUS === true && data.ROLE == 1) {
@@ -77,18 +78,36 @@ document.getElementById("loginForm").addEventListener("submit", (event) => {
 
 });
 
-function registerUser() {
-  const form = document.getElementById('signupForm');
-  const formData = new FormData(form);
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevents the default form submission
+
+  var formData = new FormData(this); // 'this' refers to the form
 
   fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/loginAndRegister/nn.php', {
-    method: 'POST',
-    body: formData
+      method: 'POST',
+      body: formData
   })
-    .then(response => response.json())
-    .then(data => {
+  .then(response => response.json())
+  .then(data => {
       console.log(data);
-      alert(data.message);
-    })
-    .catch(error => console.error('Error:', error));
-}
+      if (data.message) {
+          alert("User registered successfully");
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+});
