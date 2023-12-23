@@ -16,15 +16,15 @@
         
         <div class="side-content">
             <div class="profile">
-                <div class="profile-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                <h4>David Green</h4>
-                <small>Art Director</small>
+                <!-- <div id="profile-img" class="profile-img bg-img" style="background-image: url(img/1.jpeg)"></div> -->
+                <img id="ProfileImgTwo" class="profile-img bg-img" src="" alt="Profile Image">
+                <h4 id="userName"></h4>
+                <small id="userEmail">Art Director</small>
             </div>
-
             <div class="side-menu">
                 <ul>
                     <li>
-                       <a href="" class="active">
+                       <a href="index.html" class="">
                             <span class="las la-home"></span>
                             <small>Dashboard</small>
                         </a>
@@ -36,12 +36,12 @@
                         </a>
                     </li>
                     <li>
-                       <a href="Read-Reviews.html">
+                       <a href="" class="active">
                             <span class="lar la-star"></span>
                             <small>Reviews</small>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                        <a href="">
                             <span class="las la-clipboard-list"></span>
                             <small>Projects</small>
@@ -58,7 +58,7 @@
                             <span class="las la-tasks"></span>
                             <small>Tasks</small>
                         </a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>
@@ -69,27 +69,27 @@
         
         <header>
             <div class="header-content">
-                <label for="menu-toggle">
-                    <span class="las la-bars"></span>
+                <label  style="margin-top:19px ;" for="menu-toggle">
+                    <span  class="las la-bars"></span>
                 </label>
                 
                 <div class="header-menu">
                     <label for="">
-                        <span class="las la-search"></span>
+                        <!-- <span class="las la-search"></span> -->
                     </label>
                     
-                    <div class="notify-icon">
+                    <!-- <div class="notify-icon">
                         <span class="las la-envelope"></span>
                         <span class="notify">4</span>
-                    </div>
+                    </div> -->
                     
-                    <div class="notify-icon">
+                    <!-- <div class="notify-icon">
                         <span class="las la-bell"></span>
                         <span class="notify">3</span>
-                    </div>
+                    </div> -->
                     
-                    <div class="user">
-                        <div class="bg-img" style="background-image: url(img/1.jpeg)"></div>
+                    <div style="margin-top:12px ;" class="user">
+                        <!-- <div class="bg-img" style="background-image: url(img/1.jpeg)"></div> -->
                         
                         <span class="las la-power-off"></span>
                         <span>Logout</span>
@@ -171,7 +171,7 @@
                         <div class="add">
                             <span>Add</span>
 
-                            <button class="addbtn" type="button"><a href="./add.html"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button>
+                            <button class="addbtn" type="button"><a href="./ad"><i class="las la-plus-square" style="font-size: 30px;"></i></a></button>
                         </div>
 
                         <!-- <div class="browse">
@@ -187,45 +187,40 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th><span class="las la-sort"></span> email</th>
-                                    <th><span class="las la-sort"></span> username</th>
-                                    <th><span class="las la-sort"></span> role_id</th>
+                                    <th><span class="las la-sort"></span> Reviewer</th>
+                                    <th><span class="las la-sort"></span> Target User</th>
+                                    <th><span class="las la-sort"></span> Rating</th>
+                                    <th><span class="las la-sort"></span> Review Text</th>
+                                    <th><span class="las la-sort"></span> Review Date</th>
                                     <th><span class="las la-sort"></span> Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="reviews-container">
                                 <tr>
+
                                     <td>#1</td>
+
                                     <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
-                                            </div>
-                                        </div>
+
                                     </td>
                                     <td>
-                                        bruno@crossover.org
+                                        
                                     </td>
                                     <td>
-                                        1224
+                                        
                                     </td>
                                     <td>
-                                        Andrew Bruno
+                                        
                                     </td>
                                     <td>
-                                        Adfvdfb1232
+                                        
                                     </td>
                                     <td>
-                                        2
+                                        <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
+                                        <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
                                     </td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
-                                            <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
-                                        </div>
-                                    </td>
+
+                                    
                                 </tr>
 
 
@@ -243,122 +238,129 @@
     </div>
 
     <script>
-            // Move the editUser function outside displayUsers
     function editUser(userID) {
         // Assuming your edit page is named "edit.html"
-        window.location.href = `./edit.html?userID=${userID}`;
+        window.location.href = `./edit-reviews.html?userID=${userID}`;
     }
 
 
+    document.addEventListener("DOMContentLoaded", function () {
+        // DOMContentLoaded event ensures that the DOM is fully loaded before executing the script
 
-                document.addEventListener("DOMContentLoaded", function () {
-            // Fetch users when the page is loaded
-            fetchUsers();
+        // Fetch data from the API when the page is loaded
+        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/ReadReviews.php') // replace 'your_api_endpoint.php' with your actual API endpoint
+            .then(response => response.json())
+            .then(data => {
+                // Handle the fetched data here
+                // For example, you can update the table with the fetched data
 
-            function fetchUsers() {
-                // Make a GET request to the API endpoint
-                fetch("http://localhost/MasterPieseAPIsGithub/masterPieseAPIs/server/Admin/usersCrud/ReadUsers.php")
-                    .then(response => {
-                        // Check if the response status is OK (200)
-                        if (response.ok) {
-                            return response.json(); // Parse the JSON response
-                        } else {
-                            throw new Error("Failed to fetch users");
-                        }
-                    })
-                    .then(users => {
-                        // Call a function to display users on the page
-                        displayUsers(users);
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                    });
-            }
+                const reviewsContainer = document.getElementById('reviews-container');
+                reviewsContainer.innerHTML = ''; // Clear existing content
 
-            function displayUsers(users) {
-                // Get the table body where users will be displayed
-                const tbody = document.querySelector("tbody");
-
-                // Clear existing table rows
-                tbody.innerHTML = "";
-
-                // Loop through each user and create a table row
-                users.forEach(user => {
-                    const row = document.createElement("tr");
+                data.forEach(review => {
+                    const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${user.UserID}</td>
-                        <td>${user.Email}</td>
-                        <td>${user.Username}</td>
-                        <td>${user.RolesID}</td>
+                        <td>${review.ReviewID}</td>
+                        <td>${review.ReviewerUsername}</td>
+                        <td>${review.TargetUsername}</td>
+                        <td>${review.Rating}</td>
+                        <td>${review.ReviewText}</td>
+                        <td>${review.ReviewDate}</td>
                         <td>
-                            <div class="actions">
-                                
-                                <button class="btn" type="button" onclick="editUser(${user.UserID})"><span class="las la-pen-alt"></span></button>
-                                <button class="btn btn-delete" type="button" onclick="deleteUser(${user.UserID})"><span class="las la-trash-alt"></span></button>
-
-                            </div>
+                            <button class="btn" type="button" onclick="editUser(1)"><span class="las la-pen-alt"></span></button>
+                            <button class="btn btn-delete" type="button"><span class="las la-trash-alt"></span></button>
                         </td>
-                        
-                    `
-                   
-
-                    ;
-
-                    // Append the row to the table body
-                    tbody.appendChild(row);
+                    `;
+                    reviewsContainer.appendChild(row);
                 });
-                
-            }
-        });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
 
 
 
 
+//dddddddddddddddddddddddddddddddddddddddd
+document.addEventListener("DOMContentLoaded", function () {
+    const reviewsContainer = document.getElementById('reviews-container');
 
-
-//ddddddddddddddddddddddddddddddddddddddddddddd//
-
-// Function to delete a user by userID
-// Function to delete a user by userID
-function deleteUser(userID) {
-    // Define the API endpoint
-    const apiEndpoint = 'http://localhost/masterPieseAPIs/masterPieseAPIs/Admin/usersCrud/DeleteUsers.php';
-
-    // Create the request configuration
-    const requestOptions = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            userID: userID,
-        }),
-    };
-
-    // Make the Fetch API request
-    fetch(apiEndpoint, requestOptions)
-        .then(response => {
-            // Check if the response status is OK (200)
-            if (response.ok) {
-                return response.json(); // Parse the JSON response
-            } else {
-                throw new Error("Failed to delete user");
-            }
+    function deleteReview(reviewID) {
+        fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/DeleteReview.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ReviewID: reviewID }),
         })
+        .then(response => response.json())
         .then(data => {
-            // Handle the response data
-            console.log(data.message); // Output the message from the server
-            // You can perform additional actions as needed
+            // Handle the response here
+            if (data.message) {
+                console.log(data.message);
+                // Optionally, you can update the UI or show a success message
+            } else if (data.error) {
+                console.error('Error:', data.error);
+                // Handle error, show an error message, etc.
+            }
         })
         .catch(error => {
-            // Handle errors during the fetch request
-            console.error("Error:", error);
+            console.error('Error:', error);
+            // Handle network errors or other issues
         });
-}
+    }
 
-// Example usage: Call the deleteUser function with the desired userID
-const userIDToDelete = 1;
-deleteUser(userIDToDelete);
+    // Event delegation to handle click events on delete buttons
+    reviewsContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('btn-delete')) {
+            const reviewID = event.target.closest('tr').querySelector('td:first-child').textContent;
+            deleteReview(reviewID);
+        }
+    });
+
+    // The rest of your existing code for fetching and displaying reviews
+    // ...
+
+});
+
+
+
+//////////////////////
+function fetchUserDataAndPopulateForm(userID) {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserID: userID }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Profile Picture URL:', data.ProfilePictureURL);
+
+                // Populate form fields with user data
+                document.getElementById('userName').innerText = data.Username;
+                document.getElementById('ProfileImgTwo').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
+                document.getElementById('userEmail').innerText = data.Email;
+                document.getElementById('userLocation').innerText = data.Location;
+                document.getElementById('userBio').innerText = data.Bio;
+
+                document.getElementById('editProfileButton').addEventListener('click', function () {
+                    window.location.href = `editProfile.html?userid=${userID} `;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let userID = sessionStorage.getItem("userid");
+            fetchUserDataAndPopulateForm(userID);
+        });
+
+        // document.getElementById('ProfileLoction').addEventListener('click', function () {
+        //     window.location.href = 'Profile.html';
+        // });
 
     </script>
 </body>

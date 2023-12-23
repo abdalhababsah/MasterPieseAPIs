@@ -75,6 +75,8 @@ function createCard(post) {
             </div>
         </div>
     `;
+  
+
 
     return card;
 }
@@ -122,6 +124,9 @@ function displayPostDetails(postId) {
                 <button id="addFriend" onclick="sendRequest(${post.UserID})" class="but-save">Add Friend</button>
                 </div>
         `;
+        // let receiverID = post.UserID;
+        // const senderID = sessionStorage.getItem('userid');
+        // checkSkillSwapRequest(senderID ,receiverID);
 
         console.log(post.profile_picture)
         // Show the detail view
@@ -129,7 +134,15 @@ function displayPostDetails(postId) {
     })
     .catch(error => console.error('Error fetching post:', error));
 }
+
+
+
+
 // Function to filter and display posts based on search input
+
+
+
+
 function filterPosts(searchInput , I_knew) {
     const url = 'http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/SkillSwapSearch/SkillSwapSearch.php';
     const data = {
@@ -251,36 +264,34 @@ function sendRequest(receiverID) {
 
 
 
-// function checkSkillSwapRequest(senderID, receiverID) {
-//     // const url = ; // Replace with your actual API endpoint
+function checkSkillSwapRequest(senderID, receiverID) {
+    // const url = ; // Replace with your actual API endpoint
   
-//     const requestData = {
-//       senderID: senderID,
-//       receiverID: receiverID
-//     };
+    const requestData = {
+      senderID: senderID,
+      receiverID: receiverID
+    };
   
-//     fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
+    fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/User/skillSwapRequests/InnerHTMLpenddingOrAddFriend.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
    
-//       },
-//       body: JSON.stringify(requestData)
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         console.log(data); // Handle the API response here
-//         // Example: Displaying the message in an HTML element with id="response"
-//         document.getElementById('addFriend').textContent = data.message;
-//       })
-//       .catch(error => {
-//         console.error('Error:', error);
-//         // Handle errors here
-//       });
-//   }
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Handle the API response here
+        // Example: Displaying the message in an HTML element with id="response"
+        document.getElementById('addFriend').textContent = data.message;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Handle errors here
+      });
+  }
   
-//   // Example usage:
-//   const senderID = 30; // Replace with the actual sender ID
-//   const receiverID = 2; // Replace with the actual receiver ID
-//   checkSkillSwapRequest(senderID, receiverID);
+  // Example usage:
+ // Replace with the actual receiver ID
   

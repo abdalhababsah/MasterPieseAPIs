@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Admin Dashboard | Keyframe Effects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+   <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+            <h3>L<span>ogo</span></h3>
+        </div>
+        
+        <div class="side-content">
+            <div class="profile">
+                <!-- <div id="profile-img" class="profile-img bg-img" style="background-image: url(img/1.jpeg)"></div> -->
+                <img id="ProfileImgTwo" class="profile-img bg-img" src="" alt="Profile Image">
+                <h4 id="userName"></h4>
+                <small id="userEmail">Art Director</small>
+            </div>
+
+            <div class="side-menu">
+                <ul>
+                    <li>
+                       <a href="" class="active">
+                            <span class="las la-home"></span>
+                            <small>Dashboard</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="">
+                            <span class="las la-user-alt"></span>
+                            <small>Profile</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="">
+                            <span class="las la-envelope"></span>
+                            <small>Mailbox</small>
+                        </a>
+                    </li>
+                    <!-- <li>
+                       <a href="">
+                            <span class="las la-clipboard-list"></span>
+                            <small>Projects</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="">
+                            <span class="las la-shopping-cart"></span>
+                            <small>Orders</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="">
+                            <span class="las la-tasks"></span>
+                            <small>Tasks</small>
+                        </a>
+                    </li> -->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        
+        <header>
+            <div class="header-content">
+                <label  style="margin-top:19px ;" for="menu-toggle">
+                    <span  class="las la-bars"></span>
+                </label>
+                
+                <div class="header-menu">
+                    <label for="">
+                        <!-- <span class="las la-search"></span> -->
+                    </label>
+                    
+                    <!-- <div class="notify-icon">
+                        <span class="las la-envelope"></span>
+                        <span class="notify">4</span>
+                    </div> -->
+                    
+                    <!-- <div class="notify-icon">
+                        <span class="las la-bell"></span>
+                        <span class="notify">3</span>
+                    </div> -->
+                    
+                    <div style="margin-top:12px ;" class="user">
+                        <!-- <div class="bg-img" style="background-image: url(img/1.jpeg)"></div> -->
+                        
+                        <span class="las la-power-off"></span>
+                        <span><a href="./index.html">back</a></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        
+        <main>
+            
+            <div class="page-header">
+                <h1>Dashboard</h1>
+                <small>Home / Dashboard</small>
+            </div>
+            
+            <div class="page-content">
+            
+                <div class="analytics">
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>107,200</h2>
+                            <span class="las la-user-friends"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>User activity this month</small>
+                            <div class="card-indicator">
+                                <div class="indicator one" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>340,230</h2>
+                            <span class="las la-eye"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Page views</small>
+                            <div class="card-indicator">
+                                <div class="indicator two" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>$653,200</h2>
+                            <span class="las la-shopping-cart"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Monthly revenue growth</small>
+                            <div class="card-indicator">
+                                <div class="indicator three" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>47,500</h2>
+                            <span class="las la-envelope"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>New E-mails received</small>
+                            <div class="card-indicator">
+                                <div class="indicator four" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="records table-responsive">
+
+                    <div class="record-header">
+                        <div class="add">
+                            <span>Add</span>
+                            <!-- <button type="button" class="addbtn" id="submit" onclick="postData()">Edit</button> -->
+                        </div>
+
+                        <!-- <div class="browse">
+                           <input type="search" placeholder="Search" class="record-search">
+                            <select name="" id="">
+                                <option value="">Status</option>
+                            </select>
+                        </div> -->
+                    </div>
+
+
+                    <div  class="edit-content">
+                        <h1>Edit User</h1>
+                
+                        <form  id="editUserForm">
+                            <div class="form-group">
+                                <label for="reviewId">Review ID:</label>
+                                <input type="text" class="form-control" id="reviewId" name="reviewId" required>
+                            </div>
+                            <div  class="form-group">
+                                <label for="reviewerUsername">Reviewer Username:</label>
+                                <input type="text" class="form-control" id="reviewerUsername" name="reviewerUsername" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="targetUsername">Target Username:</label>
+                                <input type="text" class="form-control" id="targetUsername" name="targetUsername" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="rating">Rating:</label>
+                                <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="reviewText">Review Text:</label>
+                                <textarea id="reviewText" class="form-control" name="reviewText" required></textarea>
+                            </div>
+                            <button type="button" id="saveButton">Save Changes</button>
+                        </form>
+                    </div>
+                    </div>
+
+                </div>
+            
+            </div>
+            
+        </main>
+        
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Add an event listener to the Save Changes button
+    document.getElementById("saveButton").addEventListener("click", function () {
+        // Get the form data
+        const formData = {
+            ReviewID: document.getElementById("reviewId").value,
+            ReviewerID: document.getElementById("reviewerUsername").value,
+            TargetUserID: document.getElementById("targetUsername").value,
+            Rating: document.getElementById("rating").value,
+            ReviewText: document.getElementById("reviewText").value,
+            // Add other form fields as needed
+        };
+
+        // Send a PUT request using the Fetch API
+        fetch("http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/reviews/UpdateReview.php", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    let errorText;
+
+                    try {
+                        const contentType = response.headers.get("content-type");
+
+                        if (contentType && contentType.includes("application/json")) {
+                            const errorJson = await response.json();
+                            errorText = JSON.stringify(errorJson);
+                        } else {
+                            // If the response is not JSON, treat it as plain text
+                            errorText = await response.text();
+                        }
+                    } catch (jsonError) {
+                        // If parsing as JSON fails, treat it as plain text
+                        errorText = await response.text();
+                    }
+
+                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+                }
+
+                // If the response is JSON, parse it as such
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    return response.json();
+                } else {
+                    return response.text();
+                }
+            })
+            .then((data) => {
+                console.log("Data from server:", data); // Log the parsed data
+                // You can handle the response as needed, e.g., show a success message
+            })
+            .catch((error) => {
+                console.error("Error:", error.message);
+                // Handle errors, e.g., show an error message to the user
+            });
+    });
+});
+//////////////////////
+
+function fetchUserDataAndPopulateForm(userID) {
+            fetch('http://localhost/MasterPieseAPIsGithub/MasterPieseAPIs/server/Admin/usersCrud/ReadSpacificUser.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ UserID: userID }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Profile Picture URL:', data.ProfilePictureURL);
+
+                // Populate form fields with user data
+                document.getElementById('userName').innerText = data.Username;
+                document.getElementById('ProfileImgTwo').setAttribute('src', '/MasterPieseAPIs/server/User/loginAndRegister/img/' + data.ProfilePictureURL);
+                document.getElementById('userEmail').innerText = data.Email;
+                document.getElementById('userLocation').innerText = data.Location;
+                document.getElementById('userBio').innerText = data.Bio;
+
+                document.getElementById('editProfileButton').addEventListener('click', function () {
+                    window.location.href = `editProfile.html?userid=${userID} `;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let userID = sessionStorage.getItem("userid");
+            fetchUserDataAndPopulateForm(userID);
+        });
+
+        document.getElementById('ProfileLoction').addEventListener('click', function () {
+            window.location.href = 'Profile.html';
+        });
+
+    </script>
+</body>
+</html>
